@@ -1,0 +1,16 @@
+CREATE TRIGGER `trg_attendances` BEFORE INSERT ON `attendances` FOR EACH ROW BEGIN
+	SET @id = 0;
+	SET @shift = '';
+
+	SELECT id, shift INTO @id, @shift FROM workers WHERE corporate_id_no = NEW.card;
+	IF (@id > 0) THEN
+		SET NEW.worker_id = @id;
+		SET NEW.shift = @shift;
+	ELSE 
+		SELECT id, shift INTO @id, @shift FROM employees WHERE corporate_id_no = NEW.card;
+		IF (@id > 0) THEN
+			SET NEW.employee_id = @id;
+			SET NEW.shift = @shift;
+		END IF;
+	END IF;
+END;
