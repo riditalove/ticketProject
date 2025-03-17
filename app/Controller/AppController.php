@@ -88,7 +88,7 @@ class AppController extends Controller
         $notification['Notification']['type'] = $type;
         $notification['Notification']['typeid'] = $id;
         $notification['Notification']['status'] = E_WARNING;
-        ClassRegistry::init('Notvification')->save($notification);
+        ClassRegistry::init('Notification')->save($notification);
     }
 
     public function po_cancel_Mail($id, $sub, $type)

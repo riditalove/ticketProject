@@ -72,40 +72,46 @@ class RolesController extends AppController
 
         $acl = [
             'Master Settings' =>
-            [
-                'Role Management' => ['controller' => 'roles', 'action' => ['index' => 'List', 'view' => 'View Details', 'add' => 'Add New', 'edit' => 'Edit Role', 'delete' => 'Delete Role']],
-                'Config Management' => ['controller' => 'configs', 'action' => ['index' => 'List', 'edit' => 'Edit All']],
-                'Factory Management' => ['controller' => 'kpifactories', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
-                'Factory Bank' => ['controller' => 'factorybanks', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
-                'Indesore Bank' => ['controller' => 'indesorebanks', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
-                'Applicant Management' => ['controller' => 'applicants', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
-                'Buyer Management' => ['controller' => 'kpibuyers', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
-                'Department Management' => ['controller' => 'kpidepartments', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
-                'User Management' => ['controller' => 'users', 'action' => ['index' => 'User List', 'add' => 'Add User', 'edit' => 'Edit User']],
-                'Access Log Management' => ['controller' => 'logs', 'action' => ['index' => 'List', 'delete' => 'Delete Login History']],
-            ],
+                [
+                    'Role Management' => ['controller' => 'roles', 'action' => ['index' => 'List', 'view' => 'View Details', 'add' => 'Add New', 'edit' => 'Edit Role', 'delete' => 'Delete Role']],
+                    'Config Management' => ['controller' => 'configs', 'action' => ['index' => 'List', 'edit' => 'Edit All']],
+                    'Travel Expense' => ['controller' => 'travelexpenses', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                    'Traveller Management' => ['controller' => 'travellers', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                    'Travel Histories' => ['controller' => 'travelhistories', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                    'Health Records' => ['controller' => 'healthrecords', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                    'Visa Histories' => ['controller' => 'visahistories', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                    'Membership Management' => ['controller' => 'memberships', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                    // 'Factory Management' => ['controller' => 'kpifactories', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                    // 'Factory Bank' => ['controller' => 'factorybanks', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                    // 'Indesore Bank' => ['controller' => 'indesorebanks', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                    // 'Applicant Management' => ['controller' => 'applicants', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                    // 'Buyer Management' => ['controller' => 'kpibuyers', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                    'Department Management' => ['controller' => 'kpidepartments', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                    'User Management' => ['controller' => 'users', 'action' => ['index' => 'User List', 'add' => 'Add User', 'edit' => 'Edit User']],
+                    // 'Access Log Management' => ['controller' => 'logs', 'action' => ['index' => 'List', 'delete' => 'Delete Login History']],
+                ],
             'PO Information' =>
-            [
-                'PO Information' => ['controller' => 'poinformations', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'view' => 'View Detail', 'poinformation_copy' => 'Copy PO Info', 'po_cancel' => 'PO Cancel', 'delete' => 'Delete']],
-                'Purchase Contract' => ['controller' => 'purchasecontracts', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'view' => 'View Details', 'create_proforma' => 'Add Proforma Invoice', 'proforma_list' => 'Proforma List', 'edit_proforma' => 'Edit Proforma Invoice', 'proforma_invoice' => 'Proforma Invoice', 'add_master_lc' => 'Add Master LC', 'delete' => 'Delete']],
-                //     'Cutting Status' => ['controller' => 'cuttingstatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
-                //     'Print/Embroidery Status' => ['controller' => 'printembstatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
-                //     'Sewing Input Status' => ['controller' => 'sewinginputstatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
-                //     'Laundry/Wash Status' => ['controller' => 'washstatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
-                //     'Packing/Finishing Status' => ['controller' => 'packingstatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
-                //     'FRI Status' => ['controller' => 'fristatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
-                //     'QA Head Comment' => ['controller' => 'qaheadcomments', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
-                //     'Traceability Team' => ['controller' => 'traceabilityteams', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
-            ],
+                [
+                    'PO Information' => ['controller' => 'poinformations', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'view' => 'View Detail', 'poinformation_copy' => 'Copy PO Info', 'po_cancel' => 'PO Cancel', 'delete' => 'Delete']],
+                    'Purchase Contract' => ['controller' => 'purchasecontracts', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'view' => 'View Details', 'create_proforma' => 'Add Proforma Invoice', 'proforma_list' => 'Proforma List', 'edit_proforma' => 'Edit Proforma Invoice', 'proforma_invoice' => 'Proforma Invoice', 'add_master_lc' => 'Add Master LC', 'delete' => 'Delete']],
+                    //     'Cutting Status' => ['controller' => 'cuttingstatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
+                    //     'Print/Embroidery Status' => ['controller' => 'printembstatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
+                    //     'Sewing Input Status' => ['controller' => 'sewinginputstatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
+                    //     'Laundry/Wash Status' => ['controller' => 'washstatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
+                    //     'Packing/Finishing Status' => ['controller' => 'packingstatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
+                    //     'FRI Status' => ['controller' => 'fristatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
+                    //     'QA Head Comment' => ['controller' => 'qaheadcomments', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
+                    //     'Traceability Team' => ['controller' => 'traceabilityteams', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
+                ],
             'Sample' =>
-            [
-                'Sample' => ['controller' => 'samples', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'sample_copy' => 'Sample Copy', 'view' => 'View Detail', 'delete' => 'Delete']],
-            ],
+                [
+                    'Sample' => ['controller' => 'samples', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'sample_copy' => 'Sample Copy', 'view' => 'View Detail', 'delete' => 'Delete']],
+                ],
             'Report' =>
-            [
-                'Traceability Reprot' => ['controller' => 'poinformations', 'action' => ['traceability_report' => 'Traceability Report', 'traceability_pending_report' => 'Traceability Pending Report', 'production_report' => 'In Production Report', 'merchandising_report' => 'Merchandising Report']],
-                'Shipment Reprot' => ['controller' => 'fristatuses', 'action' => ['shipment_report' => 'Shipment Report']],
-            ],
+                [
+                    'Traceability Reprot' => ['controller' => 'poinformations', 'action' => ['traceability_report' => 'Traceability Report', 'traceability_pending_report' => 'Traceability Pending Report', 'production_report' => 'In Production Report', 'merchandising_report' => 'Merchandising Report']],
+                    'Shipment Reprot' => ['controller' => 'fristatuses', 'action' => ['shipment_report' => 'Shipment Report']],
+                ],
         ];
         $this->set('acls', $acl);
     }
@@ -143,40 +149,46 @@ class RolesController extends AppController
 
             $acl = [
                 'Master Settings' =>
-                [
-                    'Role Management' => ['controller' => 'roles', 'action' => ['index' => 'List', 'view' => 'View Details', 'add' => 'Add New', 'edit' => 'Edit Role', 'delete' => 'Delete Role']],
-                    'Config Management' => ['controller' => 'configs', 'action' => ['index' => 'List', 'edit' => 'Edit All']],
-                    'Factory Management' => ['controller' => 'kpifactories', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
-                    'Factory Bank' => ['controller' => 'factorybanks', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
-                    'Indesore Bank' => ['controller' => 'indesorebanks', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
-                    'Applicant Management' => ['controller' => 'applicants', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
-                    'Buyer Management' => ['controller' => 'kpibuyers', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
-                    'Department Management' => ['controller' => 'kpidepartments', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
-                    'User Management' => ['controller' => 'users', 'action' => ['index' => 'User List', 'add' => 'Add User', 'edit' => 'Edit User']],
-                    'Access Log Management' => ['controller' => 'logs', 'action' => ['index' => 'List', 'delete' => 'Delete Login History']],
-                ],
+                    [
+                        'Role Management' => ['controller' => 'roles', 'action' => ['index' => 'List', 'view' => 'View Details', 'add' => 'Add New', 'edit' => 'Edit Role', 'delete' => 'Delete Role']],
+                        'Config Management' => ['controller' => 'configs', 'action' => ['index' => 'List', 'edit' => 'Edit All']],
+                        'Travel Expense' => ['controller' => 'travelexpenses', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                        'Traveller Management' => ['controller' => 'travellers', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                        'Travel Histories' => ['controller' => 'travelhistories', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                        'Health Records' => ['controller' => 'healthrecords', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                        'Visa Histories' => ['controller' => 'visahistories', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                        'Membership Management' => ['controller' => 'memberships', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                        // 'Factory Management' => ['controller' => 'kpifactories', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                        // 'Factory Bank' => ['controller' => 'factorybanks', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                        // 'Indesore Bank' => ['controller' => 'indesorebanks', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                        'Applicant Management' => ['controller' => 'applicants', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                        // 'Buyer Management' => ['controller' => 'kpibuyers', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                        // 'Department Management' => ['controller' => 'kpidepartments', 'action' => ['index' => 'List', 'add' => 'Add', 'edit' => 'Edit All']],
+                        // 'User Management' => ['controller' => 'users', 'action' => ['index' => 'User List', 'add' => 'Add User', 'edit' => 'Edit User']],
+                        // 'Access Log Management' => ['controller' => 'logs', 'action' => ['index' => 'List', 'delete' => 'Delete Login History']],
+                    ],
                 'PO Information' =>
-                [
-                    'PO Information' => ['controller' => 'poinformations', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'view' => 'View Detail', 'poinformation_copy' => 'Copy PO Info', 'po_cancel' => 'PO Cancel', 'delete' => 'Delete']],
-                    'Purchase Contract' => ['controller' => 'purchasecontracts', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'view' => 'View Details', 'create_proforma' => 'Add Proforma', 'proforma_list' => 'Proforma List', 'edit_proforma' => 'Edit Proforma', 'proforma_invoice' => 'Proforma Invoice', 'add_master_lc' => 'Add Master LC', 'delete' => 'Delete']],
-                    //     'Cutting Status' => ['controller' => 'cuttingstatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
-                    //     'Print/Embroidery Status' => ['controller' => 'printembstatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
-                    //     'Sewing Input Status' => ['controller' => 'sewinginputstatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
-                    //     'Laundry/Wash Status' => ['controller' => 'washstatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
-                    //     'Packing/Finishing Status' => ['controller' => 'packingstatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
-                    //     'FRI Status' => ['controller' => 'fristatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
-                    //     'QA Head Comment' => ['controller' => 'qaheadcomments', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
-                    //     'Traceability Team' => ['controller' => 'traceabilityteams', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
-                ],
+                    [
+                        'PO Information' => ['controller' => 'poinformations', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'view' => 'View Detail', 'poinformation_copy' => 'Copy PO Info', 'po_cancel' => 'PO Cancel', 'delete' => 'Delete']],
+                        'Purchase Contract' => ['controller' => 'purchasecontracts', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'view' => 'View Details', 'create_proforma' => 'Add Proforma', 'proforma_list' => 'Proforma List', 'edit_proforma' => 'Edit Proforma', 'proforma_invoice' => 'Proforma Invoice', 'add_master_lc' => 'Add Master LC', 'delete' => 'Delete']],
+                        //     'Cutting Status' => ['controller' => 'cuttingstatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
+                        //     'Print/Embroidery Status' => ['controller' => 'printembstatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
+                        //     'Sewing Input Status' => ['controller' => 'sewinginputstatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
+                        //     'Laundry/Wash Status' => ['controller' => 'washstatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
+                        //     'Packing/Finishing Status' => ['controller' => 'packingstatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
+                        //     'FRI Status' => ['controller' => 'fristatuses', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
+                        //     'QA Head Comment' => ['controller' => 'qaheadcomments', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
+                        //     'Traceability Team' => ['controller' => 'traceabilityteams', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'delete' => 'Delete']],
+                    ],
                 'Sample' =>
-                [
-                    'Sample' => ['controller' => 'samples', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'sample_copy' => 'Sample Copy', 'view' => 'View Detail', 'delete' => 'Delete']],
-                ],
+                    [
+                        'Sample' => ['controller' => 'samples', 'action' => ['index' => 'List', 'add' => 'Add New', 'edit' => 'Edit', 'sample_copy' => 'Sample Copy', 'view' => 'View Detail', 'delete' => 'Delete']],
+                    ],
                 'Report' =>
-                [
-                    'Production Reprot' => ['controller' => 'poinformations', 'action' => ['traceability_report' => 'Traceability Report', 'audit_po_list' => 'Audit PO List', 'traceability_pending_report' => 'Traceability Pending Report', 'production_report' => 'In Production Report', 'merchandising_report' => 'Merchandising Report', 'order_cancel_request' => 'PO Cancel Request List', 'cancel_request_approval' => 'PO Cancel Approval', 'cancelled_order_report' => 'Cancelled Order Report']],
-                    'Shipment Reprot' => ['controller' => 'fristatuses', 'action' => ['shipment_report' => 'Shipment Report']],
-                ],
+                    [
+                        'Production Reprot' => ['controller' => 'poinformations', 'action' => ['traceability_report' => 'Traceability Report', 'audit_po_list' => 'Audit PO List', 'traceability_pending_report' => 'Traceability Pending Report', 'production_report' => 'In Production Report', 'merchandising_report' => 'Merchandising Report', 'order_cancel_request' => 'PO Cancel Request List', 'cancel_request_approval' => 'PO Cancel Approval', 'cancelled_order_report' => 'Cancelled Order Report']],
+                        'Shipment Reprot' => ['controller' => 'fristatuses', 'action' => ['shipment_report' => 'Shipment Report']],
+                    ],
             ];
             $this->set('acls', $acl);
         }
