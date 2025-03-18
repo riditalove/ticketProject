@@ -68,6 +68,8 @@ class HealthrecordsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		debug($id);
+
 		if (!$this->Healthrecord->exists($id)) {
 			throw new NotFoundException(__('Invalid healthrecord'));
 		}

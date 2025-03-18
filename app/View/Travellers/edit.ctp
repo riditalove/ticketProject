@@ -16,92 +16,81 @@
 	<div class="row">
 		<div class="col-12">
 			<div class="card">
-				<div class="contact-page-aside">
+				<div class="card-body">
 
-					<div class="right-part overflow-auto">
-						<div class="right-page-header">
-							<h4 class="card-title">Travellers' Information</h4>
+
+
+					<h4 class="card-title">Edit Information</h4>
+
+
+					<?php echo $this->Form->create('Traveller', array('type' => 'file')); ?>
+
+
+
+					<div class="row">
+
+						<div class="col-md-6">
+							<?php echo $this->Form->input('name');
+							?>
 						</div>
-
-						<?php echo $this->Form->create('Traveller', array('type' => 'file')); ?>
-						<?php echo $this->Form->input('id'); ?>
-
-						<div class="row">
-
-							<div class="col-md-6">
-								<?php echo $this->Form->input('name'); ?>
-
-							</div>
-							<div class="col-md-6">
-								<?php echo $this->Form->input('designation_id'); ?>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-								<?php echo $this->Form->input('date_of_birth', [
-									'label' => 'Date of Birth',
-									'type' => 'text',
-									'required' => true,
-									'class' => 'form-control datepicker'
-								]); ?>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-								<?php echo $this->Form->input('nationality');
-								?>
-							</div>
-							<div class="col-md-6">
-								<?php echo $this->Form->input('passport_no');
-								?>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-							<?php echo $this->Form->input('passport_expiry', [
-									'label' => 'Passport Expiry',
-									'type' => 'text',
-									'required' => true,
-									'class' => 'form-control datepicker'
-								]); ?>
-							</div>
-							<div class="col-md-6">
-								<?php echo $this->Form->input('entry_by');
-								?>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-								<?php echo $this->Form->input('edit_by');
-								?>
-							</div>
-							<div class="col-md-6">
-								<?php echo $this->Form->input('status'); ?>
-							</div>
-						</div>
-
-
-
-
-
-						<div class="row">
-							<div class="col-md-6">
-								<br>
-								<?php echo $this->Form->button('Submit', array('class' => 'btn btn-success')); ?>
-							</div>
-
-						</div>
-
-						<?php echo $this->Form->end(); ?>
 					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<?php echo $this->Form->input('designation');
+
+							?>
+						</div>
+						<div class="col-md-6">
+							<?php echo $this->Form->input('date_of_birth', [
+								'label' => 'Birth Date',
+								'type' => 'text',
+								'required' => true,
+								'class' => 'form-control datepicker'
+							]);
+
+							?>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<?php echo $this->Form->input('nationality');
+
+							?>
+						</div>
+						<div class="col-md-6">
+							<?php echo $this->Form->input('passport_no');
+
+							?>
+						</div>
+					</div>
+
+					<div class="row">
+
+						<div class="col-md-6">
+							<?php echo $this->Form->input('passport_expiry', [
+								'label' => 'Passport Expiry Date',
+								'type' => 'text',
+								'required' => true,
+								'class' => 'form-control datepicker'
+							]);
+							?>
+						</div>
+						<div class="col-md-6">
+							<?php
+							echo $this->Form->input('status');
+							?>
+						</div>
+					</div>
+					<br><br>
+
+					<?php echo $this->Form->end('Submit'); ?>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 
 <?php echo $this->Html->css(array('dropify.min')); ?>
@@ -112,17 +101,6 @@
 		$('#dropify2').dropify();
 	});
 </script>
-
-
-
-
-
-
-
-
-
-
-
 
 
 

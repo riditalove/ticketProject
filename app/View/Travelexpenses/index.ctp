@@ -8,7 +8,7 @@
 				<li class="breadcrumb-item">
 					<?php echo $this->Html->link('Home', array('controller' => 'users', 'action' => 'dashboard'), array('escape' => false)); ?>
 				</li>
-				<li class="breadcrumb-item active">Expense and Budget List</li>
+				<li class="breadcrumb-item active">Traveller List</li>
 			</ol>
 		</div>
 		<div class="col-md-6 col-4 align-self-center">
@@ -58,7 +58,7 @@
 				<div class="card-body">
 					<div class="panel panel-info">
 						<div class="panel-body">
-							<?php echo $this->Form->create('Travelexpense', array('class' => 'form-horizontal')); ?>
+							<?php echo $this->Form->create('Src', array('class' => 'form-horizontal')); ?>
 							<table class="table table-condensed table-hover contact-list no-wrap stylish-table">
 								<tr>
 									<td><?php echo $this->Form->input('company_id'); ?></td>
@@ -107,62 +107,49 @@
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
-					<h4 class="card-title">Expense and Budget List</h4>
+					<h4 class="card-title">Traveller List</h4>
 					<h6 class="card-subtitle"></h6>
 					<div class="table-responsive">
 						<table class="table table-condensed table-hover contact-list no-wrap stylish-table">
 							<thead>
 								<tr>
-									<th class="bg-success text-white"><?php echo $this->Paginator->sort('id', 'SL#'); ?>
+									<th class="bg-success text-white"><?php echo $this->Paginator->sort('id'); ?></th>
+									<th class="bg-success text-white">
+										<?php echo $this->Paginator->sort('traveller_id'); ?>
 									</th>
 									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('traveller_id', 'SL1'); ?>
-									</th>
-									<?php if ($current_user['role_id'] == ADMIN) { ?>
-										<th class="bg-success text-white">
-											<?php echo $this->Paginator->sort('id', 'Credential'); ?>
-										</th>
-									<?php } ?>
-									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('submit_date', 'Submission Date'); ?>
+										<?php echo $this->Paginator->sort('submit_date'); ?>
 									</th>
 									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('expense_type', 'Expense Type'); ?>
+										<?php echo $this->Paginator->sort('expense_type'); ?>
 									</th>
 									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('description', 'Description'); ?>
+										<?php echo $this->Paginator->sort('description'); ?>
 									</th>
 									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('payment_method', 'Payment Method'); ?>
+										<?php echo $this->Paginator->sort('payment_method'); ?>
+									</th>
+									<th class="bg-success text-white"><?php echo $this->Paginator->sort('currency'); ?>
 									</th>
 									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('currency', 'Currency'); ?>
+										<?php echo $this->Paginator->sort('amount_spent'); ?>
 									</th>
 									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('budget_amount', 'Budget Amount'); ?>
+										<?php echo $this->Paginator->sort('budget_amount'); ?>
 									</th>
 									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('amount_spent', 'Amount Spent'); ?>
+										<?php echo $this->Paginator->sort('reimbursable'); ?>
 									</th>
-									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('status', 'Status'); ?>
+									<th class="bg-success text-white"><?php echo $this->Paginator->sort('status'); ?>
 									</th>
-									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('created', 'Created'); ?>
+									<th class="bg-success text-white"><?php echo $this->Paginator->sort('entry_by'); ?>
 									</th>
-									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('modified', 'Modified'); ?>
+									<th class="bg-success text-white"><?php echo $this->Paginator->sort('edit_by'); ?>
 									</th>
-									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('entry_by', 'Entry By'); ?>
+									<th class="bg-success text-white"><?php echo $this->Paginator->sort('created'); ?>
 									</th>
-									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('edited_by', 'Edited By'); ?>
+									<th class="bg-success text-white"><?php echo $this->Paginator->sort('modified'); ?>
 									</th>
-									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('reimbursable', 'Reimbursable'); ?>
-									</th>
-
 									<th class="bg-success text-white"><?php echo __('Actions'); ?></th>
 								</tr>
 							</thead>
@@ -172,57 +159,34 @@
 								$sln = (($params['page'] - 1) * $params['limit']) + 1;
 								foreach ($travelexpenses as $k => $travelexpense): ?>
 									<tr>
-										<td><?php echo ($sln + $k); ?></td>
+										<td><?php echo h($travelexpense['Travelexpense']['id']); ?>&nbsp;</td>
 										<td>
-											<div id="<?php echo $travelexpense['Travelexpense']['id']; ?>">
-												<?php echo $this->Html->link($travelexpense['Travelexpense']['traveller_id'], array('controller' => 'travelexpenses', 'action' => 'view', $travelexpense['Travelexpense']['id'])); ?>
-												<!-- <script type="text/javascript">
-													__cimg("user_img<?php echo $user['User']['id']; ?>", "<?php echo $user['User']['id']; ?>");
-												</script> -->
-											</div>
+											<?php echo $this->Html->link($travelexpense['Traveller']['name'], array('controller' => 'travellers', 'action' => 'view', $travelexpense['Traveller']['id'])); ?>
 										</td>
-										<td>
-											<?php echo $this->Html->tag('span', $this->Time->format(
-												'Y-m-d',
-												$travelexpense['Travelexpense']['submit_date']
-											)); ?>
-										</td>
-										<!-- <?php if ($current_user['role_id'] == ADMIN) { ?>
-											<td><?php echo $user['User']['username']; ?><br /><?php echo $user['User']['password']; ?>
-											</td>
-										<?php } ?> -->
-										<td>
-											<?php echo $travelexpense['Travelexpense']['expense_type']; ?>
-										</td>
-										<td>
-											<?php echo $travelexpense['Travelexpense']['description']; ?>
-											<!-- <span class="badge"
-												style="background:<?php echo $user['Role']['color_code']; ?>"><?php echo $this->Html->link($user['Role']['title'], array('controller' => 'roles', 'action' => 'view', $user['Role']['id'])); ?></span> -->
-										</td>
-										<td><?php echo $travelexpense['Travelexpense']['payment_method']; ?></td>
-										<td><?php echo $travelexpense['Travelexpense']['currency']; ?></td>
-										<td><?php echo $travelexpense['Travelexpense']['budget_amount']; ?></td>
-										<td><?php echo $travelexpense['Travelexpense']['amount_spent']; ?></td>
-										<td><?php echo $travelexpense['Travelexpense']['status']; ?></td>
-										<td><?php echo $this->Html->tag('span', $this->Time->format(
-											'Y-m-d',
-											$travelexpense['Travelexpense']['created']
-										)); ?></td>
-										<td><?php echo $this->Html->tag('span', $this->Time->format(
-											'Y-m-d',
-											$travelexpense['Travelexpense']['modified']
-										)); ?></td>
-										<td><?php echo $travelexpense['Travelexpense']['entry_by']; ?></td>
-										<td><?php echo $travelexpense['Travelexpense']['edit_by']; ?></td>
-										<td><?php echo $travelexpense['Travelexpense']['reimbursable']; ?></td>
-
-
+										<td><?php echo h($travelexpense['Travelexpense']['submit_date']); ?>&nbsp;</td>
+										<td><?php echo h($travelexpense['Travelexpense']['expense_type']); ?>&nbsp;</td>
+										<td><?php echo h($travelexpense['Travelexpense']['description']); ?>&nbsp;</td>
+										<td><?php echo h($travelexpense['Travelexpense']['payment_method']); ?>&nbsp;</td>
+										<td><?php echo h($travelexpense['Travelexpense']['currency']); ?>&nbsp;</td>
+										<td><?php echo h($travelexpense['Travelexpense']['amount_spent']); ?>&nbsp;</td>
+										<td><?php echo h($travelexpense['Travelexpense']['budget_amount']); ?>&nbsp;</td>
+										<td><?php echo h($travelexpense['Travelexpense']['reimbursable']); ?>&nbsp;</td>
+										<td><?php echo h($travelexpense['Travelexpense']['status']); ?>&nbsp;</td>
+										<td><?php echo h($travelexpense['Travelexpense']['entry_by']); ?>&nbsp;</td>
+										<td><?php echo h($travelexpense['Travelexpense']['edit_by']); ?>&nbsp;</td>
+										<td><?php echo h($travelexpense['Travelexpense']['created']); ?>&nbsp;</td>
+										<td><?php echo h($travelexpense['Travelexpense']['modified']); ?>&nbsp;</td>
 
 										<td class="actions">
 											<?php echo $this->Html->link(__('<i class="fa fa-eye" data-bs-toggle="tooltip" title="View"></i>'), array('action' => 'view', $travelexpense['Travelexpense']['id']), array('escape' => false)); ?>
-											<?php echo $this->Html->link(__('<i class="fa fa-pencil-alt text-success" data-bs-toggle="tooltip" title="Edit"></i>'), array('action' => 'edit',$travelexpense['Travelexpense']['id']), array('escape' => false)); ?>
+											<?php echo $this->Html->link(__('<i class="fa fa-pencil-alt text-success" data-bs-toggle="tooltip" title="Edit"></i>'), array('action' => 'edit', $travelexpense['Travelexpense']['id']), array('escape' => false)); ?>
 											<?php echo $this->Form->postLink(__('<i class="fa fa-trash text-danger" data-bs-toggle="tooltip" title="Delete"></i>'), array('action' => 'delete', $travelexpense['Travelexpense']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $travelexpense['Travelexpense']['id']), 'escape' => false)); ?>
 										</td>
+
+
+
+
+
 									</tr>
 								<?php endforeach; ?>
 							</tbody>
@@ -234,3 +198,92 @@
 		</div>
 	</div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="travelexpenses index">
+	<h2><?php echo __('Travelexpenses'); ?></h2>
+	<table cellpadding="0" cellspacing="0">
+	<thead>
+	<tr>
+			<th><?php echo $this->Paginator->sort('id'); ?></th>
+			<th><?php echo $this->Paginator->sort('traveller_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('submit_date'); ?></th>
+			<th><?php echo $this->Paginator->sort('expense_type'); ?></th>
+			<th><?php echo $this->Paginator->sort('description'); ?></th>
+			<th><?php echo $this->Paginator->sort('payment_method'); ?></th>
+			<th><?php echo $this->Paginator->sort('currency'); ?></th>
+			<th><?php echo $this->Paginator->sort('amount_spent'); ?></th>
+			<th><?php echo $this->Paginator->sort('budget_amount'); ?></th>
+			<th><?php echo $this->Paginator->sort('reimbursable'); ?></th>
+			<th><?php echo $this->Paginator->sort('status'); ?></th>
+			<th><?php echo $this->Paginator->sort('entry_by'); ?></th>
+			<th><?php echo $this->Paginator->sort('edit_by'); ?></th>
+			<th><?php echo $this->Paginator->sort('created'); ?></th>
+			<th><?php echo $this->Paginator->sort('modified'); ?></th>
+			<th class="actions"><?php echo __('Actions'); ?></th>
+	</tr>
+	</thead>
+	<tbody>
+	<?php foreach ($travelexpenses as $travelexpense): ?>
+	<tr>
+		<td><?php echo h($travelexpense['Travelexpense']['id']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($travelexpense['Traveller']['name'], array('controller' => 'travellers', 'action' => 'view', $travelexpense['Traveller']['id'])); ?>
+		</td>
+		<td><?php echo h($travelexpense['Travelexpense']['submit_date']); ?>&nbsp;</td>
+		<td><?php echo h($travelexpense['Travelexpense']['expense_type']); ?>&nbsp;</td>
+		<td><?php echo h($travelexpense['Travelexpense']['description']); ?>&nbsp;</td>
+		<td><?php echo h($travelexpense['Travelexpense']['payment_method']); ?>&nbsp;</td>
+		<td><?php echo h($travelexpense['Travelexpense']['currency']); ?>&nbsp;</td>
+		<td><?php echo h($travelexpense['Travelexpense']['amount_spent']); ?>&nbsp;</td>
+		<td><?php echo h($travelexpense['Travelexpense']['budget_amount']); ?>&nbsp;</td>
+		<td><?php echo h($travelexpense['Travelexpense']['reimbursable']); ?>&nbsp;</td>
+		<td><?php echo h($travelexpense['Travelexpense']['status']); ?>&nbsp;</td>
+		<td><?php echo h($travelexpense['Travelexpense']['entry_by']); ?>&nbsp;</td>
+		<td><?php echo h($travelexpense['Travelexpense']['edit_by']); ?>&nbsp;</td>
+		<td><?php echo h($travelexpense['Travelexpense']['created']); ?>&nbsp;</td>
+		<td><?php echo h($travelexpense['Travelexpense']['modified']); ?>&nbsp;</td>
+		<td class="actions">
+			<?php echo $this->Html->link(__('View'), array('action' => 'view', $travelexpense['Travelexpense']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $travelexpense['Travelexpense']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $travelexpense['Travelexpense']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $travelexpense['Travelexpense']['id']))); ?>
+		</td>
+	</tr>
+<?php endforeach; ?>
+	</tbody>
+	</table>
+	<p>
+	<?php
+	echo $this->Paginator->counter(array(
+		'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+	));
+	?>	</p>
+	<div class="paging">
+	<?php
+	echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
+	echo $this->Paginator->numbers(array('separator' => ''));
+	echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+	?>
+	</div>
+</div>
+<div class="actions">
+	<h3><?php echo __('Actions'); ?></h3>
+	<ul>
+		<li><?php echo $this->Html->link(__('New Travelexpense'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Travellers'), array('controller' => 'travellers', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Traveller'), array('controller' => 'travellers', 'action' => 'add')); ?> </li>
+	</ul>
+</div> -->

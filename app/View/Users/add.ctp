@@ -10,7 +10,7 @@
                     type: "POST",
                     evalScripts: true,
                     url: '<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'ajax_checkuser')); ?>',
-                    data: ({username: val}),
+                    data: ({ username: val }),
                     success: function (data) {
                         if (data) {
                             _toast('e', data);
@@ -28,7 +28,9 @@
     <div class="row page-titles">
         <div class="col-md-6 col-8 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><?php echo $this->Html->link('Home', array('controller' => 'users', 'action' => 'dashboard'), array('escape' => false)); ?></li>
+                <li class="breadcrumb-item">
+                    <?php echo $this->Html->link('Home', array('controller' => 'users', 'action' => 'dashboard'), array('escape' => false)); ?>
+                </li>
                 <li class="breadcrumb-item active">Add Employee</li>
             </ol>
         </div>
@@ -85,6 +87,8 @@
                             <?php echo $this->Form->input('company_id', array('empty' => 'Please select', 'required' => true)); ?>
                         </div>
                         <div class="col-md-6">
+                           
+                    
                             <div class="form-group">
                                 <?php echo $this->Form->input('image', array('label' => 'Recent Photo', 'type' => 'file', 'class' => 'dropify')); ?>
                             </div>

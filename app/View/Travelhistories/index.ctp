@@ -115,13 +115,17 @@
 								<tr>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('id'); ?></th>
 									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('traveller_id'); ?></th>
+										<?php echo $this->Paginator->sort('traveller_id'); ?>
+									</th>
 									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('departure_date'); ?></th>
+										<?php echo $this->Paginator->sort('departure_date'); ?>
+									</th>
 									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('return_date'); ?></th>
+										<?php echo $this->Paginator->sort('return_date'); ?>
+									</th>
 									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('destination'); ?></th>
+										<?php echo $this->Paginator->sort('destination'); ?>
+									</th>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('purpose'); ?>
 									</th>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('status'); ?>
@@ -160,9 +164,11 @@
 										<td><?php echo h($travelhistory['Travelhistory']['created']); ?>&nbsp;</td>
 										<td><?php echo h($travelhistory['Travelhistory']['modified']); ?>&nbsp;</td>
 										<td class="actions">
-											<?php echo $this->Html->link(__('View'), array('action' => 'view', $travelhistory['Travelhistory']['id'])); ?>
-											<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $travelhistory['Travelhistory']['id'])); ?>
-											<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $travelhistory['Travelhistory']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $travelhistory['Travelhistory']['id']))); ?>
+
+											<?php echo $this->Html->link(__('<i class="fa fa-eye" data-bs-toggle="tooltip" title="View"></i>'), array('action' => 'view', $travelhistory['Travelhistory']['id']), array('escape' => false)); ?>
+											<?php echo $this->Html->link(__('<i class="fa fa-pencil-alt text-success" data-bs-toggle="tooltip" title="Edit"></i>'), array('action' => 'edit', $travelhistory['Travelhistory']['id']), array('escape' => false)); ?>
+											<?php echo $this->Form->postLink(__('<i class="fa fa-trash text-danger" data-bs-toggle="tooltip" title="Delete"></i>'), array('action' => 'delete', $travelhistory['Travelhistory']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $travelhistory['Travelhistory']['id']), 'escape' => false)); ?>
+
 										</td>
 
 									</tr>

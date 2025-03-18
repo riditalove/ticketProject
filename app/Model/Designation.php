@@ -12,6 +12,7 @@ class Designation extends AppModel {
 
     public $virtualFields = array('label' => 'CONCAT(Designation.id, " -- " , Designation.name)');
 
+    public $name = 'Designation';
     /**
      * Validation rules
      *

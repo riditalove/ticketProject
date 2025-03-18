@@ -1,136 +1,115 @@
 <div class="container-fluid">
+	<!-- Breadcrumb Navigation -->
 	<div class="row page-titles">
 		<div class="col-md-6 col-8 align-self-center">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item">
-					<?php echo $this->Html->link('Home', array('controller' => 'users', 'action' => 'dashboard'), array('escape' => false)); ?>
+					<?php echo $this->Html->link('Home', ['controller' => 'users', 'action' => 'dashboard'], ['escape' => false]); ?>
 				</li>
-				<li class="breadcrumb-item active">Basic Information</li>
+				<li class="breadcrumb-item active">Edit the Travel Expense</li>
 			</ol>
 		</div>
-		<div class="col-md-6 col-4 align-self-center">
-			<?php echo $this->Html->link("<i class='fa fa-list-ul'></i> User List", array('action' => 'index'), array('class' => 'btn pull-right btn-success', 'escape' => false)); ?>
+		<div class="col-md-6 col-4 text-right">
+			<?php echo $this->Html->link(
+				"<i class='fa fa-list-ul'></i> User List",
+				['action' => 'index'],
+				['class' => 'btn btn-success', 'escape' => false]
+			);
+			?>
 		</div>
 	</div>
 
+	<!-- Card Section -->
 	<div class="row">
 		<div class="col-12">
 			<div class="card">
-				<div class="contact-page-aside">
+				<div class="card-body">
+					<h4 class="card-title">Edit the travel Expense</h4>
 
-					<div class="right-part overflow-auto">
-						<div class="right-page-header">
-							<h4 class="card-title">Travellers' Information</h4>
+					<?php echo $this->Form->create('Travelexpense', ['type' => 'file']); ?>
+
+					<div class="row">
+						<div class="col-md-6">
+							<?php echo $this->Form->input('traveller_id');
+							?>
 						</div>
-
-						<?php echo $this->Form->create('Travelexpense', array('type' => 'file')); ?>
-						<?php echo $this->Form->input('id'); ?>
-
-						<div class="row">
-
-							<div class="col-md-6">
-								<?php
-
-								echo $this->Form->input('expense_type');
-								?>
-
-
-							</div>
-							<div class="col-md-6">
-								<?php echo $this->Form->input('submit_date', [
-									'label' => 'Submit Date',
-									'type' => 'text',
-									'required' => true,
-									'class' => 'form-control datepicker'
-								]); ?>
-							</div>
+						<div class="col-md-6">
+						<?php echo $this->Form->input('reimbursable');?>
 						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-								<?php
-								echo $this->Form->input('description');
-								?>
-
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-								<?php echo $this->Form->input('payment_method');
-
-								?>
-							</div>
-							<div class="col-md-6">
-								<?php echo $this->Form->input('currency');
-
-								?>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-								<?php echo $this->Form->input('amount_spent');
-								?>
-							</div>
-							<div class="col-md-6">
-								<?php echo $this->Form->input('budget_amount');
-
-								?>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-								<?php echo $this->Form->input('reimbursable');
-
-								?>
-							</div>
-							<div class="col-md-6"><?php
-							echo $this->Form->input('status'); ?>
-
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-								<?php echo $this->Form->input('entry_by'); ?>
-
-							</div>
-							<div class="col-md-6">
-								<?php
-								echo $this->Form->input('edit_by');
-								?>
-							</div>
-
-						</div>
-
-
-
-
-
-						<div class="row">
-							<div class="col-md-6">
-								<br>
-								<?php echo $this->Form->button('Submit', array('class' => 'btn btn-success')); ?>
-							</div>
-
-						</div>
-
-						<?php echo $this->Form->end(); ?>
 					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<?php echo $this->Form->input('submit_date', [
+								'label' => 'Submit Date',
+								'type' => 'text',
+								'required' => true,
+								'class' => 'form-control datepicker'
+							]); ?>
+						</div>
+						<div class="col-md-6">
+							<?php echo $this->Form->input('expense_type');
+							?>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<?php echo $this->Form->input('description');
+							?>
+						</div>
+						<div class="col-md-6">
+							<?php echo $this->Form->input('payment_method');
+							?>
+						</div>
+					</div>
+
+					<div class="row">
+
+						<div class="col-md-6">
+							<?php echo $this->Form->input('currency');
+							; ?>
+						</div>
+						<div class="col-md-6">
+
+						</div>
+					</div>
+
+					<div class="row">
+
+						<div class="col-md-6">
+							<?php echo $this->Form->input('budget_amount');
+
+							?>
+						</div>
+						<div class="col-md-6">
+							<?php echo $this->Form->input('amount_spent');
+							?>
+						</div>
+					</div>
+
+					<?php echo $this->Form->input('status'); ?>
+
+
+
+
+					<div class="text-right mt-3">
+						<?php echo $this->Form->button('Submit', ['class' => 'btn btn-success']); ?>
+					</div>
+
+					<?php echo $this->Form->end(); ?>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
-<?php echo $this->Html->css(array('dropify.min')); ?>
-<?php echo $this->Html->script(array('dropify.min')); ?>
+<!-- Dropify Plugin -->
+<?php echo $this->Html->css(['dropify.min']); ?>
+<?php echo $this->Html->script(['dropify.min']); ?>
 <script type="text/javascript">
 	$(document).ready(function () {
-		$('#dropify').dropify();
-		$('#dropify2').dropify();
+		$('.dropify').dropify();
 	});
 </script>
 
@@ -144,9 +123,19 @@
 
 
 
-<!-- 
 
-<div class="travelexpenses form">
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="travelexpenses form">
 <?php echo $this->Form->create('Travelexpense'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Travelexpense'); ?></legend>
