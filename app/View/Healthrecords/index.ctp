@@ -8,11 +8,10 @@
 				<li class="breadcrumb-item">
 					<?php echo $this->Html->link('Home', array('controller' => 'users', 'action' => 'dashboard'), array('escape' => false)); ?>
 				</li>
-				<li class="breadcrumb-item active">Traveller List</li>
+				<li class="breadcrumb-item active">Health Records</li>
 			</ol>
 		</div>
 		<div class="col-md-6 col-4 align-self-center">
-			<?php echo $this->Html->link("<i class='fa fa-plus-circle'></i> Import", array('action' => 'import'), array('style' => 'margin-left:5px;', 'class' => 'btn pull-right btn-success', 'escape' => false)); ?>
 			<?php echo $this->Html->link("<i class='fa fa-plus-circle'></i> Add New", array('action' => 'add'), array('class' => 'btn pull-right btn-success', 'escape' => false)); ?>
 		</div>
 	</div>
@@ -107,7 +106,7 @@
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
-					<h4 class="card-title">Traveller List</h4>
+					<h4 class="card-title">Health Records</h4>
 					<h6 class="card-subtitle"></h6>
 					<div class="table-responsive">
 						<table class="table table-condensed table-hover contact-list no-wrap stylish-table">
@@ -115,12 +114,10 @@
 								<tr>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('id'); ?></th>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('traveller_id'); ?></th>
-									<th class="bg-success text-white"><?php echo $this->Paginator->sort('country_id'); ?></th>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('hospital_name'); ?></th>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('checkup_date'); ?></th>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('status'); ?></th>
-									<th class="bg-success text-white"><?php echo $this->Paginator->sort('entry_by'); ?></th>
-									<th class="bg-success text-white"><?php echo $this->Paginator->sort('edit_by'); ?></th>
+									<th class="bg-success text-white"><?php echo $this->Paginator->sort('checkup_type'); ?></th>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('created'); ?></th>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('modified'); ?></th>
 									<th class="bg-success text-white"><?php echo __('Actions'); ?></th>
@@ -137,14 +134,10 @@
 										<td>
 											<?php echo $this->Html->link($healthrecord['Traveller']['name'], array('controller' => 'travellers', 'action' => 'view', $healthrecord['Traveller']['id'])); ?>
 										</td>
-										<td>
-											<?php echo $this->Html->link($healthrecord['Country']['name'], array('controller' => 'countries', 'action' => 'view', $healthrecord['Country']['id'])); ?>
-										</td>
 										<td><?php echo h($healthrecord['Healthrecord']['hospital_name']); ?>&nbsp;</td>
 										<td><?php echo h($healthrecord['Healthrecord']['checkup_date']); ?>&nbsp;</td>
 										<td><?php echo h($healthrecord['Healthrecord']['status']); ?>&nbsp;</td>
-										<td><?php echo h($healthrecord['Healthrecord']['entry_by']); ?>&nbsp;</td>
-										<td><?php echo h($healthrecord['Healthrecord']['edit_by']); ?>&nbsp;</td>
+										<td><?php echo h($healthrecord['Healthrecord']['checkup_type']); ?>&nbsp;</td>
 										<td><?php echo h($healthrecord['Healthrecord']['created']); ?>&nbsp;</td>
 										<td><?php echo h($healthrecord['Healthrecord']['modified']); ?>&nbsp;</td>
 									

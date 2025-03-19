@@ -89,17 +89,12 @@
                             echo "<li class='sidebar-item'>" . $this->Html->link('<i class="fa-solid fa-industry"></i> <span class="hide-menu">Visa Histories</span>', array('controller' => 'visahistories', 'action' => 'index'), array('escape' => false, 'class' => 'sidebar-link')) . "</li>";
                         }
 
-                        if (isset($perms['kpibuyers']['index']) && !is_numeric($perms['kpibuyers']['index'])) {
-                            echo "<li class='sidebar-item'>" . $this->Html->link('<i class="fa-solid fa-bag-shopping"></i> <span class="hide-menu">Health Records</span>', array('controller' => 'kpibuyers', 'action' => 'index'), array('escape' => false, 'class' => 'sidebar-link')) . "</li>";
+                        if (isset($perms['healthrecords']['index']) && !is_numeric($perms['healthrecords']['index'])) {
+                            echo "<li class='sidebar-item'>" . $this->Html->link('<i class="fa-solid fa-industry"></i> <span class="hide-menu">Health Records</span>', array('controller' => 'healthrecords', 'action' => 'index'), array('escape' => false, 'class' => 'sidebar-link')) . "</li>";
                         }
-                        if (isset($perms['kpidepartments']['index']) && !is_numeric($perms['kpidepartments']['index'])) {
-                            echo "<li class='sidebar-item'>" . $this->Html->link('<i class="fa-solid fa-person-half-dress"></i> <span class="hide-menu">Department</span>', array('controller' => 'kpidepartments', 'action' => 'index'), array('escape' => false, 'class' => 'sidebar-link')) . "</li>";
-                        }
-                        if (isset($perms['users']['index']) && !is_numeric($perms['users']['index'])) {
-                            echo "<li class='sidebar-item'>" . $this->Html->link('<i class="fa-regular fa-user"></i> <span class="hide-menu">User</span>', array('controller' => 'users', 'action' => 'index'), array('escape' => false, 'class' => 'sidebar-link')) . "</li>";
-                        }
-                        if (isset($perms['logs']['index']) && !is_numeric($perms['logs']['index'])) {
-                            echo "<li class='sidebar-item'>" . $this->Html->link('<i class="fa fa-cogs"></i> <span class="hide-menu">Log</span>', array('controller' => 'logs', 'action' => 'index'), array('escape' => false, 'class' => 'sidebar-link')) . "</li>";
+
+                        if (isset($perms['memberships']['index']) && !is_numeric($perms['memberships']['index'])) {
+                            echo "<li class='sidebar-item'>" . $this->Html->link('<i class="fa-solid fa-industry"></i> <span class="hide-menu">Airlines & Hotel Membership</span>', array('controller' => 'memberships', 'action' => 'index'), array('escape' => false, 'class' => 'sidebar-link')) . "</li>";
                         }
 
                         ?>

@@ -18,15 +18,36 @@
 			<div class="card">
 				<div class="card-body wizard-content">
 					<h4 class="card-title">Add Members</h4>
-					<?php echo $this->Form->create('Memberhsip', ['type' => 'file']); ?>
+					<?php echo $this->Form->create('Membership', ['type' => 'file']); ?>
 					<?php
 					echo $this->Form->input('traveller_id');
 					echo $this->Form->input('country_id');
-					echo $this->Form->input('issue_date');
-					echo $this->Form->input('expiry_date');
+					echo $this->Form->input('issue_date', [
+						'label' => 'Issue Date',
+						'type' => 'text',
+						'required' => true,
+						'class' => 'form-control datepicker'
+					]);
+
+					echo $this->Form->input('expiry_date', [
+						'label' => 'Expiry Date',
+						'type' => 'text',
+						'required' => true,
+						'class' => 'form-control datepicker'
+					]);
+
+
+					echo $this->Form->input('membership_type', array(
+						'type' => 'radio',
+						'legend' => false, // Removes the default legend
+						'label' => false,  // Removes the default label
+						'options' => array(
+							'airline' => 'Airline',
+							'hotel' => 'Hotel'
+						)
+					));
+
 					echo $this->Form->input('status');
-					echo $this->Form->input('entry_by');
-					echo $this->Form->input('edit_by');
 					?>
 					<br>
 					<?php echo $this->Form->end('Submit'); ?>
@@ -44,6 +65,7 @@
 		$('.dropify').dropify();
 	});
 </script>
+
 
 
 

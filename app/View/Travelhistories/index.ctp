@@ -8,11 +8,11 @@
 				<li class="breadcrumb-item">
 					<?php echo $this->Html->link('Home', array('controller' => 'users', 'action' => 'dashboard'), array('escape' => false)); ?>
 				</li>
-				<li class="breadcrumb-item active">Employee List</li>
+				<li class="breadcrumb-item active">Travel History</li>
 			</ol>
 		</div>
 		<div class="col-md-6 col-4 align-self-center">
-			<?php echo $this->Html->link("<i class='fa fa-plus-circle'></i> Import", array('action' => 'import'), array('style' => 'margin-left:5px;', 'class' => 'btn pull-right btn-success', 'escape' => false)); ?>
+			<!-- <?php echo $this->Html->link("<i class='fa fa-plus-circle'></i> Import", array('action' => 'import'), array('style' => 'margin-left:5px;', 'class' => 'btn pull-right btn-success', 'escape' => false)); ?> -->
 			<?php echo $this->Html->link("<i class='fa fa-plus-circle'></i> Add New", array('action' => 'add'), array('class' => 'btn pull-right btn-success', 'escape' => false)); ?>
 		</div>
 	</div>
@@ -107,7 +107,7 @@
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
-					<h4 class="card-title">Employee List</h4>
+					<h4 class="card-title">Travel History</h4>
 					<h6 class="card-subtitle"></h6>
 					<div class="table-responsive">
 						<table class="table table-condensed table-hover contact-list no-wrap stylish-table">

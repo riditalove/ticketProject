@@ -33,7 +33,22 @@ class TravellersController extends AppController
 	public function index()
 	{
 		$this->Traveller->recursive = 0;
-		$this->set('travellers', $this->Paginator->paginate());
+
+		$conditions = array();
+        if (!empty($this->request->data['Src']['nationality'])) {
+            $conditions[] = array("Traveller.nationality " => $this->request->data['Src']['nationality']);
+        }
+        if (!empty($this->request->data['Src']['designation'])) {
+            $conditions[] = array("Traveller.designation" => $this->request->data['Src']['designation']);
+        }
+        if (!empty($this->request->data['Src']['name'])) {
+            $conditions[] = array("Traveller.name LIKE '%" . $this->request->data['Src']['name'] . "%'");
+        }
+        $this->Paginator->settings = array('conditions' => $conditions, 'order' => array('Traveller.id' => 'DESC'));
+        $this->set('travellers', $this->Paginator->paginate());
+
+
+
 	}
 
 	/**
@@ -170,4 +185,30 @@ class TravellersController extends AppController
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+
+	public function ajax_search() {
+		$this->autoRender = false;
+		$conditions = array();
+	
+		if ($this->request->is('ajax')) {
+			if (!empty($this->request->data['name'])) {
+				$conditions['Traveller.name LIKE'] = '%' . $this->request->data['name'] . '%';
+			}
+			if (!empty($this->request->data['designation'])) {
+				$conditions['Traveller.designation LIKE'] = '%' . $this->request->data['designation'] . '%';
+			}
+			if (!empty($this->request->data['nationality'])) {
+				$conditions['Traveller.nationality LIKE'] = '%' . $this->request->data['nationality'] . '%';
+			}
+		}
+	
+		$this->Traveller->recursive = -1;
+		$travellers = $this->Traveller->find('all', array(
+			'conditions' => $conditions,
+			'limit' => 10
+		));
+	
+		echo json_encode($travellers);
+	}
+	
 }

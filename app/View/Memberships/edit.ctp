@@ -1,5 +1,3 @@
-
-
 <div class="container-fluid">
 	<!-- Page Title & Breadcrumb -->
 	<div class="row page-titles">
@@ -20,59 +18,59 @@
 	<div class="row">
 		<div class="col-12">
 			<div class="card">
-				<div class="contact-page-aside">
-					<div class="right-part overflow-auto p-4">
-						<!-- Form Header -->
-						<div class="right-page-header">
-							<h4 class="card-title">Membership</h4>
+				<div class="card-body">
+
+					<!-- Form Header -->
+					<h4 class="card-title">Membership</h4>
+
+					<?php echo $this->Form->create('Membership', ['type' => 'file']); ?>
+
+					<div class="row">
+						<div class="col-md-6">
+							<?php echo $this->Form->input('traveller_id'); ?>
 						</div>
-
-						<?php echo $this->Form->create('Membership', ['type' => 'file']); ?>
-
-						<div class="row">
-
-							<div class="col-md-6">
-								<?php echo $this->Form->input('traveller_id'); ?>
-							</div>
-							<div class="col-md-6">
-								<?php echo $this->Form->input('country_id'); ?>
-							</div>
+						<div class="col-md-6">
+							<?php echo $this->Form->input('country_id'); ?>
 						</div>
-
-						<div class="row">
-							
-							<div class="col-md-6">
-								<?php echo $this->Form->input('issue_date'); ?>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-								<?php echo $this->Form->input('expiry_date'); ?>
-							</div>
-							<div class="col-md-6">
-								<?php echo $this->Form->input('status'); ?>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-								<?php echo $this->Form->input('entry_by'); ?>
-							</div>
-							<div class="col-md-6">
-								<?php echo $this->Form->input('edit_by'); ?>
-							</div>
-						</div>
-
-						<!-- Submit Button -->
-						<div class="row">
-							<div class="col-md-12 text-center mt-4">
-								<?php echo $this->Form->button('<i class="fa fa-check"></i> Submit', ['class' => 'btn btn-success px-4', 'escape' => false]); ?>
-							</div>
-						</div>
-
-						<?php echo $this->Form->end(); ?>
 					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<?php echo $this->Form->input('issue_date', [
+								'label' => 'Issue Date',
+								'type' => 'text',
+								'required' => true,
+								'class' => 'form-control datepicker'
+							]); ?>
+						</div>
+						<div class="col-md-6">
+							<?php echo $this->Form->input('expiry_date', [
+								'label' => 'Expiry Date',
+								'type' => 'text',
+								'required' => true,
+								'class' => 'form-control datepicker'
+							]); ?>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<?php echo $this->Form->input('status'); ?>
+						</div>
+						<div class="col-md-6">
+							<label>Membership Type</label>
+							<?php echo $this->Form->radio('membership_type', [
+								'airline' => 'Airline',
+								'hotel' => 'Hotel'
+							], [
+								'legend' => false
+							]); ?>
+						</div>
+					</div>
+
+					<!-- Submit Button -->
+					<br>
+					<?php echo $this->Form->end("Submit"); ?>
 				</div>
 			</div>
 		</div>
@@ -85,9 +83,10 @@
 
 <script type="text/javascript">
 	$(document).ready(function () {
-		$('#dropify, #dropify2').dropify();
+		$('.dropify').dropify();
 	});
 </script>
+
 
 
 

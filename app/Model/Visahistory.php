@@ -6,13 +6,14 @@ App::uses('AppModel', 'Model');
  * @property Traveller $Traveller
  * @property Country $Country
  */
-class Visahistory extends AppModel {
+class Visahistory extends AppModel
+{
 
-/**
- * Validation rules
- *
- * @var array
- */
+	/**
+	 * Validation rules
+	 *
+	 * @var array
+	 */
 	public $validate = array(
 		'traveller_id' => array(
 			'numeric' => array(
@@ -88,11 +89,11 @@ class Visahistory extends AppModel {
 
 	// The Associations below have been created with all possible keys, those that are not needed can be removed
 
-/**
- * belongsTo associations
- *
- * @var array
- */
+	/**
+	 * belongsTo associations
+	 *
+	 * @var array
+	 */
 	public $belongsTo = array(
 		'Traveller' => array(
 			'className' => 'Traveller',
@@ -101,6 +102,7 @@ class Visahistory extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
+
 		'Country' => array(
 			'className' => 'Country',
 			'foreignKey' => 'country_id',

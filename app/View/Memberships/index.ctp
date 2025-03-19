@@ -8,7 +8,7 @@
 				<li class="breadcrumb-item">
 					<?php echo $this->Html->link('Home', array('controller' => 'users', 'action' => 'dashboard'), array('escape' => false)); ?>
 				</li>
-				<li class="breadcrumb-item active">Department List</li>
+				<li class="breadcrumb-item active">Airlines & Hotel Membership</li>
 			</ol>
 		</div>
 		<div class="col-md-6 col-4 align-self-center">
@@ -73,23 +73,21 @@
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
-					<h4 class="card-title">Department List</h4>
+					<h4 class="card-title">Airlines & Hotel Membership</h4>
 
 					<div class="table-responsive">
 						<table class="table table-condensed table-hover contact-list no-wrap stylish-table">
 							<thead>
 								<tr>
-									<th><?php echo $this->Paginator->sort('id'); ?></th>
-									<th><?php echo $this->Paginator->sort('traveller_id'); ?></th>
-									<th><?php echo $this->Paginator->sort('country_id'); ?></th>
-									<th><?php echo $this->Paginator->sort('issue_date'); ?></th>
-									<th><?php echo $this->Paginator->sort('expiry_date'); ?></th>
-									<th><?php echo $this->Paginator->sort('status'); ?></th>
-									<th><?php echo $this->Paginator->sort('entry_by'); ?></th>
-									<th><?php echo $this->Paginator->sort('edit_by'); ?></th>
-									<th><?php echo $this->Paginator->sort('created'); ?></th>
-									<th><?php echo $this->Paginator->sort('modified'); ?></th>
-									<th class="actions"><?php echo __('Actions'); ?></th>
+									<th class="bg-success text-white"><?php echo $this->Paginator->sort('id'); ?></th>
+									<th class="bg-success text-white"><?php echo $this->Paginator->sort('traveller_id'); ?></th>
+									<th class="bg-success text-white"><?php echo $this->Paginator->sort('country_id'); ?></th>
+									<th class="bg-success text-white"><?php echo $this->Paginator->sort('issue_date'); ?></th>
+									<th class="bg-success text-white"><?php echo $this->Paginator->sort('expiry_date'); ?></th>
+									<th class="bg-success text-white"><?php echo $this->Paginator->sort('status'); ?></th>
+									<th class="bg-success text-white"><?php echo $this->Paginator->sort('created'); ?></th>
+									<th class="bg-success text-white"><?php echo $this->Paginator->sort('modified'); ?></th>
+									<th class="bg-success text-white" class="actions"><?php echo __('Actions'); ?></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -110,13 +108,12 @@
 										<td><?php echo h($membership['Membership']['issue_date']); ?>&nbsp;</td>
 										<td><?php echo h($membership['Membership']['expiry_date']); ?>&nbsp;</td>
 										<td><?php echo h($membership['Membership']['status']); ?>&nbsp;</td>
-										<td><?php echo h($membership['Membership']['entry_by']); ?>&nbsp;</td>
-										<td><?php echo h($membership['Membership']['edit_by']); ?>&nbsp;</td>
 										<td><?php echo h($membership['Membership']['created']); ?>&nbsp;</td>
 										<td><?php echo h($membership['Membership']['modified']); ?>&nbsp;</td>
 										<td class="actions">
 											<?php echo $this->Html->link(__('<i class="fa fa-pencil-alt text-success" data-bs-toggle="tooltip" title="Edit"></i>'), array('action' => 'edit', $membership['Membership']['id']), array('escape' => false)); ?>
 											<?php echo $this->Form->postLink(__('<i class="fa fa-trash text-danger" data-bs-toggle="tooltip" title="Delete"></i>'), array('action' => 'delete', $membership['Membership']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $membership['Membership']['id']), 'escape' => false)); ?>
+											<?php echo $this->Html->link(__('<i class="fa fa-eye" data-bs-toggle="tooltip" title="View"></i>'), array('action' => 'view', $membership['Membership']['id']), array('escape' => false)); ?>
 										</td>
 									</tr>
 								<?php endforeach; ?>

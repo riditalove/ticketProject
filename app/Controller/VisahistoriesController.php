@@ -84,6 +84,7 @@ class VisahistoriesController extends AppController {
 		}
 		$travellers = $this->Visahistory->Traveller->find('list');
 		$countries = $this->Visahistory->Country->find('list');
+		
 		$this->set(compact('travellers', 'countries'));
 	}
 

@@ -31,12 +31,14 @@
 					<div class="row">
 
 						<div class="col-md-6">
-							<?php 		echo $this->Form->input('traveller_id');
- ?>
+							<?php 
+							echo $this->Form->input('id');
+							echo $this->Form->input('traveller_id');
+							?>
 						</div>
 						<div class="col-md-6">
-							<?php 		echo $this->Form->input('country_id');
- ?>
+							<?php echo $this->Form->input('country_id');
+							?>
 						</div>
 					</div>
 
@@ -59,8 +61,8 @@
 						</div>
 					</div>
 
-					
-					<?php echo $this->Form->input('status');?>
+
+					<?php echo $this->Form->input('status'); ?>
 					<div class="text-right mt-3">
 						<?php echo $this->Form->button('Submit', ['class' => 'btn btn-success']); ?>
 					</div>
@@ -97,14 +99,14 @@
 	<fieldset>
 		<legend><?php echo __('Edit Visahistory'); ?></legend>
 	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('traveller_id');
-		echo $this->Form->input('country_id');
-		echo $this->Form->input('issue_date');
-		echo $this->Form->input('expiry_date');
-		echo $this->Form->input('status');
-		echo $this->Form->input('entry_by');
-		echo $this->Form->input('edit_by');
+	echo $this->Form->input('id');
+	echo $this->Form->input('traveller_id');
+	echo $this->Form->input('country_id');
+	echo $this->Form->input('issue_date');
+	echo $this->Form->input('expiry_date');
+	echo $this->Form->input('status');
+	echo $this->Form->input('entry_by');
+	echo $this->Form->input('edit_by');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

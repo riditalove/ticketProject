@@ -26,16 +26,26 @@
 				<div class="card-body">
 					<h4 class="card-title">Edit the Health Records</h4>
 
-					<?php echo $this->Form->create('Healthrecord', ['type' => 'file','url' => ['action' => 'edit', $this->request->data['Healthrecord']['id']]]); ?>
+					<?php echo $this->Form->create('Healthrecord', ['type' => 'file']); ?>
 
 					<div class="row">
 						<div class="col-md-6">
-							<?php echo $this->Form->input('traveller_id');
 
+							<?php
+							 echo $this->Form->input('id');
+							 echo $this->Form->input('traveller_id');
 							?>
 						</div>
 						<div class="col-md-6">
-							<?php echo $this->Form->input('country_id'); ?>
+							<?php echo $this->Form->input('checkup_type', [
+								'label' => 'Checkup Type',
+								'type' => 'select',
+								'options' => $checkup_type,
+								'empty' => 'Select Expense Type',
+								'class' => 'form-control',
+								'required' => true
+							]);
+							?>
 						</div>
 					</div>
 

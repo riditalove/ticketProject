@@ -41,7 +41,7 @@
 							]); ?>
 						</div>
 						<div class="col-md-6">
-							<?php echo $this->Form->input('expiry_date',[
+							<?php echo $this->Form->input('expiry_date', [
 								'label' => 'Expiry Date',
 								'type' => 'text',
 								'required' => true,
@@ -49,6 +49,8 @@
 							]); ?>
 						</div>
 					</div>
+
+
 					<?php
 					echo $this->Form->input('status');
 					echo $this->Form->end('Submit');

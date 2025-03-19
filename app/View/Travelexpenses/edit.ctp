@@ -30,7 +30,9 @@
 
 					<div class="row">
 						<div class="col-md-6">
-							<?php echo $this->Form->input('traveller_id');
+							<?php 
+							echo $this->Form->input('id');
+							echo $this->Form->input('traveller_id');
 							?>
 						</div>
 						<div class="col-md-6">

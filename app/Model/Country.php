@@ -55,19 +55,6 @@ class Country extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'Healthrecord' => array(
-			'className' => 'Healthrecord',
-			'foreignKey' => 'country_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
 		'Membership' => array(
 			'className' => 'Membership',
 			'foreignKey' => 'country_id',

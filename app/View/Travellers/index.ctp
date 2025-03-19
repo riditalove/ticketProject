@@ -12,10 +12,12 @@
 			</ol>
 		</div>
 		<div class="col-md-6 col-4 align-self-center">
-			<?php echo $this->Html->link("<i class='fa fa-plus-circle'></i> Import", array('action' => 'import'), array('style' => 'margin-left:5px;', 'class' => 'btn pull-right btn-success', 'escape' => false)); ?>
 			<?php echo $this->Html->link("<i class='fa fa-plus-circle'></i> Add New", array('action' => 'add'), array('class' => 'btn pull-right btn-success', 'escape' => false)); ?>
 		</div>
 	</div>
+
+	<!-- Search Results Will Be Displayed Here -->
+
 	<!-- ============================================================== -->
 	<!-- End Bread crumb and right sidebar toggle -->
 	<!-- ============================================================== -->
@@ -24,33 +26,49 @@
 	<!-- ============================================================== -->
 	<script type="text/javascript">
 		$(document).ready(function () {
-			$('#SrcCompanyId').change(function () {
-				ajax_getdepartment_by_company($('#SrcCompanyId').val());
-			});
-			<?php if (!empty($this->request->data['Src']['company_id'])) { ?>
-				ajax_getdepartment_by_company(<?php echo $this->request->data['Src']['company_id']; ?>, <?php echo isset($this->request->data['Src']['department_id']) ? $this->request->data['Src']['department_id'] : 0; ?>);
-			<?php } ?>
-		});
+			function fetchTravellers() {
+				var name = $('#searchName').val();
+				var designation = $('#searchDesignation').val();
+				var nationality = $('#searchNationality').val();
 
-		function ajax_getdepartment_by_company(cid, uid) {
-			if (cid !== '') {
 				$.ajax({
 					type: "POST",
-					url: '<?php echo $this->Html->url(array('controller' => 'departments', 'action' => 'ajax_getdepartments')); ?>',
+					url: "<?php echo $this->Html->url(array('controller' => 'travellers', 'action' => 'ajax_search')); ?>",
 					data: {
-						model: 'Src',
-						company_id: cid,
-						department_id: uid
+						name: name,
+						designation: designation,
+						nationality: nationality
 					},
-					success: function (data) {
-						$("#div_department_id").html(data);
+					dataType: "json",
+					success: function (response) {
+						var html = '';
+						if (response.length > 0) {
+							$.each(response, function (index, traveller) {
+								html += '<tr>';
+								html += '<td>' + traveller.Traveller.name + '</td>';
+								html += '<td>' + traveller.Traveller.designation + '</td>';
+								html += '<td>' + traveller.Traveller.nationality + '</td>';
+								html += '<td><a href="<?php echo $this->Html->url(array('action' => 'view')); ?>/' + traveller.Traveller.id + '">View</a></td>';
+								html += '</tr>';
+							});
+						} else {
+							html = '<tr><td colspan="4">No results found.</td></tr>';
+						}
+						$('#searchResults tbody').html(html);
 					}
 				});
 			}
-		}
 
-		function ajax_getdesignation_by_department() { }
+			// Trigger search when user types
+			$('#searchName, #searchDesignation, #searchNationality').on('keyup', function () {
+				fetchTravellers();
+			});
+
+			// Initial fetch when the page loads (optional)
+			fetchTravellers();
+		});
 	</script>
+
 
 	<div class="row">
 		<div class="col-lg-12">
@@ -58,19 +76,14 @@
 				<div class="card-body">
 					<div class="panel panel-info">
 						<div class="panel-body">
-							<?php echo $this->Form->create('Src', array('class' => 'form-horizontal')); ?>
+							<?php echo $this->Form->create('Src', array('id' => 'searchForm', 'type' => 'post', 'class' => 'form-horizontal')); ?>
 							<table class="table table-condensed table-hover contact-list no-wrap stylish-table">
 								<tr>
-									<td><?php echo $this->Form->input('company_id'); ?></td>
-									<td id="div_department_id">
-										<?php echo $this->Form->input('department_id', array('empty' => 'Please Select')); ?>
+									<td><?php echo $this->Form->input('name', array('label' => 'Name', 'id' => 'searchName')); ?>
 									</td>
-									<td><?php echo $this->Form->input('role_id', array('empty' => 'Please Select')); ?>
+									<td><?php echo $this->Form->input('designation', array('label' => 'Designation', 'id' => 'searchDesignation')); ?>
 									</td>
-									<td><?php echo $this->Form->input('name'); ?></td>
-									<td><?php echo $this->Form->input('phone'); ?></td>
-									<td><?php echo $this->Form->input('email'); ?></td>
-									<td><?php echo $this->Form->input('status', array('empty' => 'Please Select', 'options' => array(E_ERROR => 'Active', PHP_DEBUG => 'Inactive'))); ?>
+									<td><?php echo $this->Form->input('nationality', array('label' => 'Nationality', 'id' => 'searchNationality')); ?>
 									</td>
 									<td><?php echo $this->Form->button('Search', array('class' => 'm-t-15 btn btn-info', 'name' => 'btnsrc')); ?>
 									</td>
@@ -130,10 +143,6 @@
 									<th class="bg-success text-white">
 										<?php echo $this->Paginator->sort('passport_expiry'); ?>
 									</th>
-									<th class="bg-success text-white"><?php echo $this->Paginator->sort('entry_by'); ?>
-									</th>
-									<th class="bg-success text-white"><?php echo $this->Paginator->sort('edit_by'); ?>
-									</th>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('status'); ?>
 									</th>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('created'); ?>
@@ -159,8 +168,6 @@
 										<td><?php echo h($traveller['Traveller']['nationality']); ?>&nbsp;</td>
 										<td><?php echo h($traveller['Traveller']['passport_no']); ?>&nbsp;</td>
 										<td><?php echo h($traveller['Traveller']['passport_expiry']); ?>&nbsp;</td>
-										<td><?php echo h($traveller['Traveller']['entry_by']); ?>&nbsp;</td>
-										<td><?php echo h($traveller['Traveller']['edit_by']); ?>&nbsp;</td>
 										<td><?php echo h($traveller['Traveller']['status']); ?>&nbsp;</td>
 										<td><?php echo h($traveller['Traveller']['created']); ?>&nbsp;</td>
 										<td><?php echo h($traveller['Traveller']['modified']); ?>&nbsp;</td>

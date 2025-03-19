@@ -8,11 +8,10 @@
 				<li class="breadcrumb-item">
 					<?php echo $this->Html->link('Home', array('controller' => 'users', 'action' => 'dashboard'), array('escape' => false)); ?>
 				</li>
-				<li class="breadcrumb-item active">Traveller List</li>
+				<li class="breadcrumb-item active">Visa Histories</li>
 			</ol>
 		</div>
 		<div class="col-md-6 col-4 align-self-center">
-			<?php echo $this->Html->link("<i class='fa fa-plus-circle'></i> Import", array('action' => 'import'), array('style' => 'margin-left:5px;', 'class' => 'btn pull-right btn-success', 'escape' => false)); ?>
 			<?php echo $this->Html->link("<i class='fa fa-plus-circle'></i> Add New", array('action' => 'add'), array('class' => 'btn pull-right btn-success', 'escape' => false)); ?>
 		</div>
 	</div>
@@ -107,7 +106,7 @@
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
-					<h4 class="card-title">Traveller List</h4>
+					<h4 class="card-title">Visa Histories</h4>
 					<h6 class="card-subtitle"></h6>
 					<div class="table-responsive">
 						<table class="table table-condensed table-hover contact-list no-wrap stylish-table">
@@ -123,10 +122,6 @@
 									<th class="bg-success text-white">
 										<?php echo $this->Paginator->sort('expiry_date'); ?></th>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('status'); ?>
-									</th>
-									<th class="bg-success text-white"><?php echo $this->Paginator->sort('entry_by'); ?>
-									</th>
-									<th class="bg-success text-white"><?php echo $this->Paginator->sort('edit_by'); ?>
 									</th>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('created'); ?>
 									</th>
@@ -151,8 +146,6 @@
 										<td><?php echo h($visahistory['Visahistory']['issue_date']); ?>&nbsp;</td>
 										<td><?php echo h($visahistory['Visahistory']['expiry_date']); ?>&nbsp;</td>
 										<td><?php echo h($visahistory['Visahistory']['status']); ?>&nbsp;</td>
-										<td><?php echo h($visahistory['Visahistory']['entry_by']); ?>&nbsp;</td>
-										<td><?php echo h($visahistory['Visahistory']['edit_by']); ?>&nbsp;</td>
 										<td><?php echo h($visahistory['Visahistory']['created']); ?>&nbsp;</td>
 										<td><?php echo h($visahistory['Visahistory']['modified']); ?>&nbsp;</td>
 

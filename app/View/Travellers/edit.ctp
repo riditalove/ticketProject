@@ -5,7 +5,7 @@
 				<li class="breadcrumb-item">
 					<?php echo $this->Html->link('Home', array('controller' => 'users', 'action' => 'dashboard'), array('escape' => false)); ?>
 				</li>
-				<li class="breadcrumb-item active">Basic Information</li>
+				<li class="breadcrumb-item active">Edit Traveller's Information</li>
 			</ol>
 		</div>
 		<div class="col-md-6 col-4 align-self-center">
@@ -20,7 +20,7 @@
 
 
 
-					<h4 class="card-title">Edit Information</h4>
+					<h4 class="card-title">Edit Traveller's Information</h4>
 
 
 					<?php echo $this->Form->create('Traveller', array('type' => 'file')); ?>
@@ -30,7 +30,9 @@
 					<div class="row">
 
 						<div class="col-md-6">
-							<?php echo $this->Form->input('name');
+							<?php 
+							echo $this->Form->input('id');
+							echo $this->Form->input('name');
 							?>
 						</div>
 					</div>
