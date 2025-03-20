@@ -13,8 +13,8 @@
 		</dd>
 		<dt><?php echo __('Designation'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($traveller['Designation']['name'], array('controller' => 'designations', 'action' => 'view', $traveller['Designation']['id'])); ?>
-			&nbsp;
+		<?php echo h($traveller['Traveller']['designation']); ?>
+		&nbsp;
 		</dd>
 		<dt><?php echo __('Date Of Birth'); ?></dt>
 		<dd>

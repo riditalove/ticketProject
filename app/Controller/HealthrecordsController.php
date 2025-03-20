@@ -8,6 +8,14 @@ App::uses('AppController', 'Controller');
  */
 class HealthrecordsController extends AppController {
 
+	private $checkup_type = array('1' => 'ECG', '2' => 'Xray', '3' => 'EEG', '4' => 'Angiography', '5' => 'Biopsy', '6' => 'CT scan');
+
+	public function beforeFilter()
+	{
+		parent::beforeFilter();
+		$this->set('checkup_type', $this->checkup_type);	
+	}
+
 /**
  * Components
  *
@@ -56,8 +64,7 @@ class HealthrecordsController extends AppController {
 			}
 		}
 		$travellers = $this->Healthrecord->Traveller->find('list');
-		$countries = $this->Healthrecord->Country->find('list');
-		$this->set(compact('travellers', 'countries'));
+		$this->set(compact('travellers'));
 	}
 
 /**
@@ -68,9 +75,7 @@ class HealthrecordsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-		if (!$this->Healthrecord->exists($id)) {
-			throw new NotFoundException(__('Invalid healthrecord'));
-		}
+
 		if ($this->request->isPost() || $this->request->isPut()) {
 			if ($this->Healthrecord->save($this->request->data)) {
 				$this->Flash->success('The healthrecord has been saved.');
@@ -83,8 +88,7 @@ class HealthrecordsController extends AppController {
 			$this->request->data = $this->Healthrecord->find('first', $options);
 		}
 		$travellers = $this->Healthrecord->Traveller->find('list');
-		$countries = $this->Healthrecord->Country->find('list');
-		$this->set(compact('travellers', 'countries'));
+		$this->set(compact('travellers'));
 	}
 
 /**

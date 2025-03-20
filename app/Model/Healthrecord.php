@@ -101,12 +101,6 @@ class Healthrecord extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'Country' => array(
-			'className' => 'Country',
-			'foreignKey' => 'country_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
+
 	);
 }

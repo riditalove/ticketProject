@@ -60,6 +60,8 @@
 
     echo $this->Html->css(array('style.min', 'select2.min', 'bootstrap-datepicker.min', 'sweetalert2.min'));
     echo $this->Html->script(array('jquery.min', 'bootstrap.bundle.min', 'sweetalert2.all.min', 'app.init'));
+    echo $this->Html->script('https://code.jquery.com/jquery-3.6.0.min.js');
+
 
     echo $this->fetch('meta');
     echo $this->fetch('css');

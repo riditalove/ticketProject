@@ -13,7 +13,21 @@ class TravelexpensesControllerTest extends ControllerTestCase {
  */
 	public $fixtures = array(
 		'app.travelexpense',
-		'app.traveller'
+		'app.traveller',
+		'app.designation',
+		'app.department',
+		'app.company',
+		'app.companytype',
+		'app.companynature',
+		'app.user',
+		'app.role',
+		'app.login',
+		'app.section',
+		'app.healthrecord',
+		'app.country',
+		'app.membership',
+		'app.visahistory',
+		'app.travelhistory'
 	);
 
 /**

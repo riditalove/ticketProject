@@ -117,15 +117,15 @@ class Traveller extends AppModel {
  *
  * @var array
  */
-	public $belongsTo = array(
-		'Designation' => array(
-			'className' => 'Designation',
-			'foreignKey' => 'designation_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
-	);
+	// public $belongsTo = array(
+	// 	'Designation' => array(
+	// 		'className' => 'Designation',
+	// 		'foreignKey' => 'designation_id',
+	// 		'conditions' => '',
+	// 		'fields' => '',
+	// 		'order' => ''
+	// 	)
+	// );
 
 /**
  * hasMany associations

@@ -25,9 +25,9 @@ class TravellersControllerTest extends ControllerTestCase {
 		'app.healthrecord',
 		'app.country',
 		'app.membership',
+		'app.visahistory',
 		'app.travelexpense',
-		'app.travelhistory',
-		'app.visahistory'
+		'app.travelhistory'
 	);
 
 /**
