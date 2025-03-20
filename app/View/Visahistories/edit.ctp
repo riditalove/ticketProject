@@ -31,7 +31,7 @@
 					<div class="row">
 
 						<div class="col-md-6">
-							<?php 
+							<?php
 							echo $this->Form->input('id');
 							echo $this->Form->input('traveller_id');
 							?>
@@ -55,14 +55,51 @@
 							<?php echo $this->Form->input('expiry_date', [
 								'label' => 'Expiry Date',
 								'type' => 'text',
+								'id' => 'expiryDate',
 								'required' => true,
 								'class' => 'form-control datepicker'
 							]); ?>
 						</div>
 					</div>
 
+					<div class="row">
+						<div class="col-md-6">
+							<label>Days Remaining:</label>
+							<input type="text" id="daysRemaining" class="form-control" readonly>
+						</div>
 
-					<?php echo $this->Form->input('status'); ?>
+
+						<script>
+							// Function to calculate remaining days
+							function calculateRemainingDays() {
+								var expiryDate = new Date(document.getElementById('expiryDate').value);
+								var today = new Date();
+								var timeDiff = expiryDate - today;
+								var daysRemaining = Math.ceil(timeDiff / (1000 * 3600 * 24)); // Convert ms to days
+
+								// If expiry date is in the past, show 0 or negative value
+								document.getElementById('daysRemaining').value = daysRemaining >= 0 ? daysRemaining : 0;
+							}
+
+							// Attach the function to expiry date change
+							document.getElementById('expiryDate').addEventListener('change', calculateRemainingDays);
+
+							// Initialize the days remaining if expiry date is already filled
+							window.onload = function () {
+								if (document.getElementById('expiryDate').value) {
+									calculateRemainingDays();
+								}
+							}
+						</script>
+						<div class="col-md-6">
+							<?php echo $this->Form->input('status'); ?>
+						</div>
+					</div>
+
+
+
+
+
 					<div class="text-right mt-3">
 						<?php echo $this->Form->button('Submit', ['class' => 'btn btn-success']); ?>
 					</div>

@@ -27,7 +27,9 @@
 
 					<div class="row">
 						<div class="col-md-6">
-							<?php echo $this->Form->input('traveller_id'); ?>
+							<?php
+							echo $this->Form->input('id');
+							echo $this->Form->input('traveller_id'); ?>
 						</div>
 						<div class="col-md-6">
 							<?php echo $this->Form->input('country_id'); ?>
@@ -55,16 +57,21 @@
 
 					<div class="row">
 						<div class="col-md-6">
-							<?php echo $this->Form->input('status'); ?>
+							<?php echo $this->Form->label('membership_type', 'Membership Type', ['class' => 'control-label']);
+							foreach (['airline' => 'Airline', 'hotel' => 'Hotel'] as $key => $value) {
+								echo '<div class="form-check">';
+								echo $this->Form->radio('membership_type', [$key => $value], [
+									'legend' => false, // Remove fieldset
+									'separator' => '', // No default separator
+									'label' => ['class' => 'form-check-label'],
+									'class' => 'form-check-input'
+								]);
+								echo '</div>';
+							}
+							?>
 						</div>
 						<div class="col-md-6">
-							<label>Membership Type</label>
-							<?php echo $this->Form->radio('membership_type', [
-								'airline' => 'Airline',
-								'hotel' => 'Hotel'
-							], [
-								'legend' => false
-							]); ?>
+							<?php echo $this->Form->input('status'); ?>
 						</div>
 					</div>
 

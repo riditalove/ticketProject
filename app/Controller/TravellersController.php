@@ -12,10 +12,10 @@ class TravellersController extends AppController
 
 
 	public function beforeFilter()
-    {
-        parent::beforeFilter();
-        $this->set('nationality', $this->nationality);
-    }
+	{
+		parent::beforeFilter();
+		$this->set('nationality', $this->nationality);
+	}
 
 	public $components = array('Paginator', 'Uploader');
 
@@ -35,17 +35,17 @@ class TravellersController extends AppController
 		$this->Traveller->recursive = 0;
 
 		$conditions = array();
-        if (!empty($this->request->data['Src']['nationality'])) {
-            $conditions[] = array("Traveller.nationality " => $this->request->data['Src']['nationality']);
-        }
-        if (!empty($this->request->data['Src']['designation'])) {
-            $conditions[] = array("Traveller.designation" => $this->request->data['Src']['designation']);
-        }
-        if (!empty($this->request->data['Src']['name'])) {
-            $conditions[] = array("Traveller.name LIKE '%" . $this->request->data['Src']['name'] . "%'");
-        }
-        $this->Paginator->settings = array('conditions' => $conditions, 'order' => array('Traveller.id' => 'DESC'));
-        $this->set('travellers', $this->Paginator->paginate());
+		if (!empty($this->request->data['Src']['nationality'])) {
+			$conditions[] = array("Traveller.nationality " => $this->request->data['Src']['nationality']);
+		}
+		if (!empty($this->request->data['Src']['designation'])) {
+			$conditions[] = array("Traveller.designation" => $this->request->data['Src']['designation']);
+		}
+		if (!empty($this->request->data['Src']['name'])) {
+			$conditions[] = array("Traveller.name LIKE '%" . $this->request->data['Src']['name'] . "%'");
+		}
+		$this->Paginator->settings = array('conditions' => $conditions, 'order' => array('Traveller.id' => 'DESC'));
+		$this->set('travellers', $this->Paginator->paginate());
 
 
 
@@ -72,6 +72,35 @@ class TravellersController extends AppController
 	 *
 	 * @return void
 	 */
+
+	//  
+
+	// public function add()
+	// {
+	// 	if ($this->request->is('post')) {
+	// 		if (!empty($this->request->data['Traveller']['pfile']['name'])) {
+	// 			$file = $this->request->data['Traveller']['pfile'];
+	// 			$ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+	// 			$fileName = 'passport_' . time() . '.' . $ext;
+	// 			$uploadPath = WWW_ROOT . 'img' . DS . 'passport-traveller' . DS . $fileName;
+
+	// 			if (move_uploaded_file($file['tmp_name'], $uploadPath)) {
+	// 				$this->request->data['Traveller']['pfile'] = 'img/passport-traveller/' . $fileName;
+	// 			} else {
+	// 				$this->Session->setFlash(__('File upload failed. Please try again.'));
+	// 			}
+	// 		}
+
+	// 		$this->Traveller->create();
+	// 		if ($this->Traveller->save($this->request->data)) {
+	// 			$this->Session->setFlash(__('The traveller has been saved.'));
+	// 			return $this->redirect(array('action' => 'index'));
+	// 		} else {
+	// 			$this->Session->setFlash(__('The traveller could not be saved. Please try again.'));
+	// 		}
+	// 	}
+	// }
+
 	public function add()
 	{
 
@@ -94,6 +123,10 @@ class TravellersController extends AppController
 
 			if ($this->Traveller->save($this->request->data)) {
 				$this->Uploader->uploadFile($this->request->data['Traveller']['pfile'], $this->Traveller->getInsertID(), 'passport-traveller');
+				$passportFileName = $this->Traveller->getInsertID() . '.' . $this->request->data['Traveller']['pext'];
+				$passportPath = 'img' . DS . 'passport-traveller' . DS . $passportFileName;
+				$this->Traveller->saveField('passportfile', $passportPath);
+
 				$this->Uploader->uploadFile($this->request->data['Traveller']['ifile'], $this->Traveller->getInsertID(), 'identification-traveller');
 				$this->Uploader->uploadFile($this->request->data['Traveller']['efile'], $this->Traveller->getInsertID(), 'employment-traveller');
 				$this->Flash->success('The traveller has been saved.');
@@ -186,10 +219,11 @@ class TravellersController extends AppController
 		return $this->redirect(array('action' => 'index'));
 	}
 
-	public function ajax_search() {
+	public function ajax_search()
+	{
 		$this->autoRender = false;
 		$conditions = array();
-	
+
 		if ($this->request->is('ajax')) {
 			if (!empty($this->request->data['name'])) {
 				$conditions['Traveller.name LIKE'] = '%' . $this->request->data['name'] . '%';
@@ -201,14 +235,14 @@ class TravellersController extends AppController
 				$conditions['Traveller.nationality LIKE'] = '%' . $this->request->data['nationality'] . '%';
 			}
 		}
-	
+
 		$this->Traveller->recursive = -1;
 		$travellers = $this->Traveller->find('all', array(
 			'conditions' => $conditions,
 			'limit' => 10
 		));
-	
+
 		echo json_encode($travellers);
 	}
-	
+
 }

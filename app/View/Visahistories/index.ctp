@@ -1,4 +1,5 @@
 <div class="container-fluid">
+	
 	<!-- ============================================================== -->
 	<!-- Bread crumb and right sidebar toggle -->
 	<!-- ============================================================== -->
@@ -114,19 +115,28 @@
 								<tr>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('id'); ?></th>
 									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('traveller_id'); ?></th>
+										<?php echo $this->Paginator->sort('traveller_id'); ?>
+									</th>
 									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('country_id'); ?></th>
+										<?php echo $this->Paginator->sort('country_id'); ?>
+									</th>
 									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('issue_date'); ?></th>
+										<?php echo $this->Paginator->sort('issue_date'); ?>
+									</th>
 									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('expiry_date'); ?></th>
+										<?php echo $this->Paginator->sort('expiry_date'); ?>
+									</th>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('status'); ?>
 									</th>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('created'); ?>
 									</th>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('modified'); ?>
 									</th>
+
+
+									<th class="bg-success text-white"><?php echo $this->Paginator->sort('Notification'); ?>
+									</th>
+
 									<th class="bg-success text-white"><?php echo __('Actions'); ?></th>
 								</tr>
 							</thead>
@@ -149,12 +159,50 @@
 										<td><?php echo h($visahistory['Visahistory']['created']); ?>&nbsp;</td>
 										<td><?php echo h($visahistory['Visahistory']['modified']); ?>&nbsp;</td>
 
+
+										<td>
+											<?php
+											$expiryDate = new DateTime($visahistory['Visahistory']['expiry_date']);
+											$today = new DateTime();
+
+											// Ensure both dates are set to midnight to avoid time discrepancies
+											$expiryDate->setTime(0, 0);
+											$today->setTime(0, 0);
+
+											$interval = $today->diff($expiryDate);
+											$remainingDays = $interval->days;
+
+											// Check if the expiry date is in the past (expired visa)
+											if ($expiryDate < $today) {
+												$remainingDays = -$remainingDays; // Expired visa, show negative days
+											}
+
+											// Determine the status message based on remaining days
+											if ($remainingDays < 0) {
+												$statusMessage = 'danger';  // Visa has expired
+												$remainingDays = abs($remainingDays); // Show the absolute value of days
+											} else {
+												$statusMessage = ($remainingDays <= 7) ? 'danger' : 'okay'; // Danger if within 7 days
+											}
+											?>
+
+											<?php
+											if ($statusMessage == 'danger') {
+												// If the visa is expired or within 7 days, use a danger badge and message
+												echo 'The day has passed ' . $remainingDays . ' days ago!</span>';
+											} else {
+												
+												echo   $remainingDays . ' Days Remaining</span>';
+											}
+											?>
+
+										</td>
+
 										<td class="actions">
 											<?php echo $this->Html->link(__('<i class="fa fa-eye" data-bs-toggle="tooltip" title="View"></i>'), array('action' => 'view', $visahistory['Visahistory']['id']), array('escape' => false)); ?>
 											<?php echo $this->Html->link(__('<i class="fa fa-pencil-alt text-success" data-bs-toggle="tooltip" title="Edit"></i>'), array('action' => 'edit', $visahistory['Visahistory']['id']), array('escape' => false)); ?>
 											<?php echo $this->Form->postLink(__('<i class="fa fa-trash text-danger" data-bs-toggle="tooltip" title="Delete"></i>'), array('action' => 'delete', $visahistory['Visahistory']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $visahistory['Visahistory']['id']), 'escape' => false)); ?>
 										</td>
-
 
 
 

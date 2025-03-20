@@ -59,10 +59,6 @@
 
 					<div class="row">
 						<div class="col-md-6">
-							<?php echo $this->Form->input('description');
-							?>
-						</div>
-						<div class="col-md-6">
 							<?php echo $this->Form->input('currency', [
 								'label' => 'Currency',
 								'type' => 'select',

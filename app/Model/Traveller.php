@@ -10,13 +10,14 @@ App::uses('AppModel', 'Model');
  * @property Travelhistory $Travelhistory
  * @property Visahistory $Visahistory
  */
-class Traveller extends AppModel {
+class Traveller extends AppModel
+{
 
-/**
- * Validation rules
- *
- * @var array
- */
+	/**
+	 * Validation rules
+	 *
+	 * @var array
+	 */
 	public $validate = array(
 		'name' => array(
 			'notBlank' => array(
@@ -27,6 +28,11 @@ class Traveller extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+		),
+
+		'pfile' => array(
+			'rule' => array('extension', array('pdf')),
+			'message' => 'Only PDF files are allowed'
 		),
 		'designation_id' => array(
 			'numeric' => array(
@@ -112,11 +118,11 @@ class Traveller extends AppModel {
 
 	// The Associations below have been created with all possible keys, those that are not needed can be removed
 
-/**
- * belongsTo associations
- *
- * @var array
- */
+	/**
+	 * belongsTo associations
+	 *
+	 * @var array
+	 */
 	// public $belongsTo = array(
 	// 	'Designation' => array(
 	// 		'className' => 'Designation',
@@ -127,11 +133,11 @@ class Traveller extends AppModel {
 	// 	)
 	// );
 
-/**
- * hasMany associations
- *
- * @var array
- */
+	/**
+	 * hasMany associations
+	 *
+	 * @var array
+	 */
 	public $hasMany = array(
 		'Healthrecord' => array(
 			'className' => 'Healthrecord',
