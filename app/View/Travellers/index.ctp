@@ -149,6 +149,15 @@
 									</th>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('modified'); ?>
 									</th>
+									<th class="bg-success text-white">
+										<?php echo $this->Paginator->sort('Passport File'); ?>
+									</th>
+									<th class="bg-success text-white">
+										<?php echo $this->Paginator->sort('Identification File'); ?>
+									</th>
+									<th class="bg-success text-white">
+										<?php echo $this->Paginator->sort('Employement File'); ?>
+									</th>
 
 									<th class="bg-success text-white"><?php echo __('Actions'); ?></th>
 								</tr>
@@ -171,12 +180,80 @@
 										<td><?php echo h($traveller['Traveller']['status']); ?>&nbsp;</td>
 										<td><?php echo h($traveller['Traveller']['created']); ?>&nbsp;</td>
 										<td><?php echo h($traveller['Traveller']['modified']); ?>&nbsp;</td>
+										<td>
+											<?php
+											$pdfFile = 'img/passport-traveller/' . $traveller['Traveller']['id'] . '.pdf';
+											?>
+
+											<?php if (file_exists(WWW_ROOT . $pdfFile)): ?>
+												<!-- View PDF Icon -->
+												<a href="<?php echo $this->Html->url('/' . $pdfFile); ?>" target="_blank"
+													>
+													<i class="fas fa-eye"></i> <!-- Eye icon for View -->
+												</a>
+
+												<!-- Download PDF Icon -->
+												<a href="<?php echo $this->Html->url('/' . $pdfFile); ?>" download
+													>
+													<i class="fas fa-download"></i> <!-- Download icon -->
+												</a>
+											<?php else: ?>
+												<span class="text-muted">No file uploaded</span>
+											<?php endif; ?>
+										</td>
+
+										<td>
+											<?php
+											$pdfFile = 'img/identification-traveller/' . $traveller['Traveller']['id'] . '.pdf';
+											?>
+
+											<?php if (file_exists(WWW_ROOT . $pdfFile)): ?>
+												<!-- View PDF Icon -->
+												<a href="<?php echo $this->Html->url('/' . $pdfFile); ?>" target="_blank"
+													>
+													<i class="fas fa-eye"></i> <!-- Eye icon for View -->
+												</a>
+
+												<!-- Download PDF Icon -->
+												<a href="<?php echo $this->Html->url('/' . $pdfFile); ?>" download
+													>
+													<i class="fas fa-download"></i> <!-- Download icon -->
+												</a>
+											<?php else: ?>
+												<span class="text-muted">No file uploaded</span>
+											<?php endif; ?>
+										</td>
+
+										<td>
+											<?php
+											$pdfFile = 'img/employment-traveller/' . $traveller['Traveller']['id'] . '.pdf';
+											?>
+
+											<?php if (file_exists(WWW_ROOT . $pdfFile)): ?>
+												<!-- View PDF Icon -->
+												<a href="<?php echo $this->Html->url('/' . $pdfFile); ?>" target="_blank"
+													>
+													<i class="fas fa-eye"></i> <!-- Eye icon for View -->
+												</a>
+
+												<!-- Download PDF Icon -->
+												<a href="<?php echo $this->Html->url('/' . $pdfFile); ?>" download
+													">
+													<i class="fas fa-download"></i> <!-- Download icon -->
+												</a>
+											<?php else: ?>
+												<span class="text-muted">No file uploaded</span>
+											<?php endif; ?>
+										</td>
+
+										
 										<td class="actions">
 											<?php echo $this->Html->link(__('<i class="fa fa-eye" data-bs-toggle="tooltip" title="View"></i>'), array('action' => 'view', $traveller['Traveller']['id']), array('escape' => false)); ?>
 											<?php echo $this->Html->link(__('<i class="fa fa-pencil-alt text-success" data-bs-toggle="tooltip" title="Edit"></i>'), array('action' => 'edit', $traveller['Traveller']['id']), array('escape' => false)); ?>
 											<?php echo $this->Form->postLink(__('<i class="fa fa-trash text-danger" data-bs-toggle="tooltip" title="Delete"></i>'), array('action' => 'delete', $traveller['Traveller']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $traveller['Traveller']['id']), 'escape' => false)); ?>
 
 									</tr>
+									
 								<?php endforeach; ?>
 							</tbody>
 

@@ -19,36 +19,56 @@
 				<div class="card-body wizard-content">
 					<h4 class="card-title">Add Members</h4>
 					<?php echo $this->Form->create('Membership', ['type' => 'file']); ?>
-					<?php
-					echo $this->Form->input('traveller_id');
-					echo $this->Form->input('country_id');
-					echo $this->Form->input('issue_date', [
-						'label' => 'Issue Date',
-						'type' => 'text',
-						'required' => true,
-						'class' => 'form-control datepicker'
-					]);
 
-					echo $this->Form->input('expiry_date', [
-						'label' => 'Expiry Date',
-						'type' => 'text',
-						'required' => true,
-						'class' => 'form-control datepicker'
-					]);
+					<div class="row">
+						<div class="col-md-6">
+							<?php echo $this->Form->input('traveller_id'); ?>
+						</div>
+						<div class="col-md-6">
+							<?php echo $this->Form->input('country_id'); ?>
+						</div>
+					</div>
 
 
-					echo $this->Form->input('membership_type', array(
-						'type' => 'radio',
-						'legend' => false, // Removes the default legend
-						'label' => false,  // Removes the default label
-						'options' => array(
-							'airline' => 'Airline',
-							'hotel' => 'Hotel'
-						)
-					));
+					<div class="row">
+						<div class="col-md-6">
+							<?php echo $this->Form->input('issue_date', [
+								'label' => 'Issue Date',
+								'type' => 'text',
+								'required' => true,
+								'class' => 'form-control datepicker'
+							]); ?>
+						</div>
+						<div class="col-md-6">
+							<?php echo $this->Form->input('expiry_date', [
+								'label' => 'Expiry Date',
+								'type' => 'text',
+								'required' => true,
+								'class' => 'form-control datepicker'
+							]); ?>
+						</div>
+					</div>
 
-					echo $this->Form->input('status');
-					?>
+					<div class="row">
+						<div class="col-md-6">
+							<?php echo $this->Form->label('membership_type', 'Membership Type', ['class' => 'control-label']);
+							foreach (['airline' => 'Airline', 'hotel' => 'Hotel'] as $key => $value) {
+								echo '<div class="form-check">';
+								echo $this->Form->radio('membership_type', [$key => $value], [
+									'legend' => false, // Remove fieldset
+									'separator' => '', // No default separator
+									'label' => ['class' => 'form-check-label'],
+									'class' => 'form-check-input'
+								]);
+								echo '</div>';
+							}
+							?>
+						</div>
+						<div class="col-md-6">
+							<?php echo $this->Form->input('status'); ?>
+						</div>
+					</div>
+					
 					<br>
 					<?php echo $this->Form->end('Submit'); ?>
 				</div>
