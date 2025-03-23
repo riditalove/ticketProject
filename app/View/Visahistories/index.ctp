@@ -178,11 +178,11 @@
 											}
 
 											// Determine the status message based on remaining days
-											if ($remainingDays < 0) {
+											if ($remainingDays <= 0) {
 												$statusMessage = 'danger';  // Visa has expired
 												$remainingDays = abs($remainingDays); // Show the absolute value of days
 											} else {
-												$statusMessage = ($remainingDays <= 7) ? 'danger' : 'okay'; // Danger if within 7 days
+												$statusMessage =  'okay'; // Danger if within 7 days
 											}
 											?>
 

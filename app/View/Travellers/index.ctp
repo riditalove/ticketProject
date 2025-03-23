@@ -174,7 +174,7 @@
 											<?php echo h($traveller['Traveller']['designation']); ?>&nbsp;
 										</td>
 										<td><?php echo h($traveller['Traveller']['date_of_birth']); ?>&nbsp;</td>
-										<td><?php echo h($traveller['Traveller']['nationality']); ?>&nbsp;</td>
+										<td><?php echo h($nationality[$traveller['Traveller']['nationality']]); ?>&nbsp;</td>
 										<td><?php echo h($traveller['Traveller']['passport_no']); ?>&nbsp;</td>
 										<td><?php echo h($traveller['Traveller']['passport_expiry']); ?>&nbsp;</td>
 										<td><?php echo h($traveller['Traveller']['status']); ?>&nbsp;</td>

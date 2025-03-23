@@ -137,7 +137,7 @@
 										<td><?php echo h($healthrecord['Healthrecord']['hospital_name']); ?>&nbsp;</td>
 										<td><?php echo h($healthrecord['Healthrecord']['checkup_date']); ?>&nbsp;</td>
 										<td><?php echo h($healthrecord['Healthrecord']['status']); ?>&nbsp;</td>
-										<td><?php echo h($healthrecord['Healthrecord']['checkup_type']); ?>&nbsp;</td>
+										<td><?php echo h($checkup_type[$healthrecord['Healthrecord']['checkup_type']]); ?>&nbsp;</td>
 										<td><?php echo h($healthrecord['Healthrecord']['created']); ?>&nbsp;</td>
 										<td><?php echo h($healthrecord['Healthrecord']['modified']); ?>&nbsp;</td>
 									

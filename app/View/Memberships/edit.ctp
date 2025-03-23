@@ -68,7 +68,7 @@
 								]);
 								echo '</div>';
 							}
-							?>
+							?> 
 						</div>
 						<div class="col-md-6">
 							<?php echo $this->Form->input('status'); ?>
