@@ -27,24 +27,6 @@
 							?>
 						</div>
 						<div class="col-md-6">
-							<?php echo $this->Form->input('expense_type', [
-								'label' => 'Expense Type',
-								'type' => 'select',
-								'options' => $travel_expense,
-								'empty' => 'Select Expense Type',
-								'class' => 'form-control',
-								'required' => true
-							]);
-							?>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-6">
-							<?php echo $this->Form->input('description');
-							?>
-						</div>
-						<div class="col-md-6">
 							<?php echo $this->Form->input('payment_method', [
 								'label' => 'Payment Method',
 								'type' => 'select',
@@ -58,6 +40,10 @@
 					</div>
 
 					<div class="row">
+						<div class="col-md-6">
+							<?php echo $this->Form->input('description');
+							?>
+						</div>
 						<div class="col-md-6">
 							<?php echo $this->Form->input('currency', [
 								'label' => 'Currency',
@@ -73,15 +59,79 @@
 
 					<div class="row">
 						<div class="col-md-6">
+							<?php echo $this->Form->input(
+								'flights',
+								[
+									'label' => 'Flight Expense',
+								]
+							);
+							?>
+						</div>
+						<div class="col-md-6">
+							<?php echo $this->Form->input(
+								'accommodation',
+								[
+									'label' => 'Accommodation',
+								]
+							);
+							?>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<?php echo $this->Form->input(
+								'transport',
+								[
+									'label' => 'Transportation Expense',
+								]
+							);
+							?>
+						</div>
+						<div class="col-md-6">
+							<?php echo $this->Form->input(
+								'meal',
+								[
+									'label' => 'Meals & Dinings',
+								]
+							);
+							?>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<?php echo $this->Form->input(
+								'business',
+								[
+									'label' => 'Business Expenses',
+								]
+							);
+							?>
+						</div>
+						<div class="col-md-6">
+							<?php echo $this->Form->input(
+								'miscellaneous',
+								[
+									'label' => 'Miscellaneous Expenses',
+								]
+							);
+							?>
+						</div>
+					</div>
+
+					<div class="row">
+						<!-- <div class="col-md-6">
 							<?php
 							echo $this->Form->input('amount_spent');
 							?>
-						</div>
+						</div> -->
 						<div class="col-md-6">
 							<?php echo $this->Form->input('budget_amount');
 							?>
 						</div>
 					</div>
+
 
 					<div class="row">
 						<div class="col-md-6">

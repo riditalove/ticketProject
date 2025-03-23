@@ -120,9 +120,6 @@
 										<?php echo $this->Paginator->sort('submit_date'); ?>
 									</th>
 									<th class="bg-success text-white">
-										<?php echo $this->Paginator->sort('expense_type'); ?>
-									</th>
-									<th class="bg-success text-white">
 										<?php echo $this->Paginator->sort('description'); ?>
 									</th>
 									<th class="bg-success text-white">
@@ -130,20 +127,35 @@
 									</th>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('currency'); ?>
 									</th>
-									<th class="bg-success text-white">
+									<!-- <th class="bg-success text-white">
 										<?php echo $this->Paginator->sort('amount_spent'); ?>
-									</th>
+									</th> -->
 									<th class="bg-success text-white">
 										<?php echo $this->Paginator->sort('budget_amount'); ?>
 									</th>
+
+									<th class="bg-success text-white">
+										<?php echo $this->Paginator->sort('flights'); ?>
+									</th>
+									<th class="bg-success text-white">
+										<?php echo $this->Paginator->sort('accommodation'); ?>
+									</th>
+									<th class="bg-success text-white">
+										<?php echo $this->Paginator->sort('transport'); ?>
+									</th>
+									<th class="bg-success text-white"><?php echo $this->Paginator->sort('meal'); ?>
+									</th>
+									<th class="bg-success text-white">
+										<?php echo $this->Paginator->sort('business'); ?>
+									</th>
+									<th class="bg-success text-white">
+										<?php echo $this->Paginator->sort('miscellaneous'); ?>
+									</th>
+
 									<th class="bg-success text-white">
 										<?php echo $this->Paginator->sort('reimbursable'); ?>
 									</th>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('status'); ?>
-									</th>
-									<th class="bg-success text-white"><?php echo $this->Paginator->sort('entry_by'); ?>
-									</th>
-									<th class="bg-success text-white"><?php echo $this->Paginator->sort('edit_by'); ?>
 									</th>
 									<th class="bg-success text-white"><?php echo $this->Paginator->sort('created'); ?>
 									</th>
@@ -163,16 +175,21 @@
 											<?php echo $this->Html->link($travelexpense['Traveller']['name'], array('controller' => 'travellers', 'action' => 'view', $travelexpense['Traveller']['id'])); ?>
 										</td>
 										<td><?php echo h($travelexpense['Travelexpense']['submit_date']); ?>&nbsp;</td>
-										<td><?php echo h($travelexpense['Travelexpense']['expense_type']); ?>&nbsp;</td>
 										<td><?php echo h($travelexpense['Travelexpense']['description']); ?>&nbsp;</td>
-										<td><?php echo h($travelexpense['Travelexpense']['payment_method']); ?>&nbsp;</td>
-										<td><?php echo h($travelexpense['Travelexpense']['currency']); ?>&nbsp;</td>
-										<td><?php echo h($travelexpense['Travelexpense']['amount_spent']); ?>&nbsp;</td>
+										<td><?php echo h($payment_method[$travelexpense['Travelexpense']['payment_method']]); ?>&nbsp;</td>
+										<td><?php echo h($currency[$travelexpense['Travelexpense']['currency']]); ?>&nbsp;</td>
+										<!-- <td><?php echo h($travelexpense['Travelexpense']['amount_spent']); ?>&nbsp;</td> -->
 										<td><?php echo h($travelexpense['Travelexpense']['budget_amount']); ?>&nbsp;</td>
+
+										<td><?php echo h($travelexpense['Travelexpense']['flights']); ?>&nbsp;</td>
+										<td><?php echo h($travelexpense['Travelexpense']['accommodation']); ?>&nbsp;</td>
+										<td><?php echo h($travelexpense['Travelexpense']['transport']); ?>&nbsp;</td>
+										<td><?php echo h($travelexpense['Travelexpense']['meal']); ?>&nbsp;</td>
+										<td><?php echo h($travelexpense['Travelexpense']['business']); ?>&nbsp;</td>
+										<td><?php echo h($travelexpense['Travelexpense']['miscellaneous']); ?>&nbsp;</td>
+
 										<td><?php echo h($travelexpense['Travelexpense']['reimbursable']); ?>&nbsp;</td>
 										<td><?php echo h($travelexpense['Travelexpense']['status']); ?>&nbsp;</td>
-										<td><?php echo h($travelexpense['Travelexpense']['entry_by']); ?>&nbsp;</td>
-										<td><?php echo h($travelexpense['Travelexpense']['edit_by']); ?>&nbsp;</td>
 										<td><?php echo h($travelexpense['Travelexpense']['created']); ?>&nbsp;</td>
 										<td><?php echo h($travelexpense['Travelexpense']['modified']); ?>&nbsp;</td>
 

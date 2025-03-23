@@ -30,7 +30,7 @@
 					<div class="row">
 
 						<div class="col-md-6">
-							<?php 
+							<?php
 							echo $this->Form->input('id');
 							echo $this->Form->input('name');
 							?>
@@ -57,13 +57,22 @@
 
 					<div class="row">
 						<div class="col-md-6">
-							<?php echo $this->Form->input('nationality');
+							<?php echo $this->Form->input(
+								'nationality',
+								[
+									'label' => 'Nationality',
+									'type' => 'select',
+									'options' => $nationality,
+									'empty' => 'Select Nationality',
+									'class' => 'form-control',
+									'required' => true
+								]
+							);
 
 							?>
 						</div>
 						<div class="col-md-6">
 							<?php echo $this->Form->input('passport_no');
-
 							?>
 						</div>
 					</div>

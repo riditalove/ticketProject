@@ -30,17 +30,11 @@
 
 					<div class="row">
 						<div class="col-md-6">
-							<?php 
+							<?php
 							echo $this->Form->input('id');
 							echo $this->Form->input('traveller_id');
 							?>
 						</div>
-						<div class="col-md-6">
-						<?php echo $this->Form->input('reimbursable');?>
-						</div>
-					</div>
-
-					<div class="row">
 						<div class="col-md-6">
 							<?php echo $this->Form->input('submit_date', [
 								'label' => 'Submit Date',
@@ -49,11 +43,8 @@
 								'class' => 'form-control datepicker'
 							]); ?>
 						</div>
-						<div class="col-md-6">
-							<?php echo $this->Form->input('expense_type');
-							?>
-						</div>
 					</div>
+
 
 					<div class="row">
 						<div class="col-md-6">
@@ -61,21 +52,18 @@
 							?>
 						</div>
 						<div class="col-md-6">
-							<?php echo $this->Form->input('payment_method');
+							<?php echo $this->Form->input('payment_method', [
+								'label' => 'Payment Method',
+								'type' => 'select',
+								'options' => $payment_method,
+								'empty' => 'Select Payment Type',
+								'class' => 'form-control',
+								'required' => true
+							]);
 							?>
 						</div>
 					</div>
 
-					<div class="row">
-
-						<div class="col-md-6">
-							<?php echo $this->Form->input('currency');
-							; ?>
-						</div>
-						<div class="col-md-6">
-
-						</div>
-					</div>
 
 					<div class="row">
 
@@ -84,13 +72,105 @@
 
 							?>
 						</div>
-						<div class="col-md-6">
+						<!-- <div class="col-md-6">
 							<?php echo $this->Form->input('amount_spent');
 							?>
+						</div> -->
+					</div>
+
+					<div class="row">
+
+						<div class="col-md-6">
+							<?php echo $this->Form->input('currency', [
+								'label' => 'Currency',
+								'type' => 'select',
+								'options' => $currency,
+								'empty' => 'Select Currency Type',
+								'class' => 'form-control',
+								'required' => true
+							]);
+							?>
+						</div>
+						<div class="col-md-6">
+							<?php echo $this->Form->input(
+								'flights',
+								[
+									'label' => 'Business Expenses',
+								]
+							);
+							?>
+
 						</div>
 					</div>
 
-					<?php echo $this->Form->input('status'); ?>
+					<div class="row">
+						<div class="col-md-6">
+							<?php echo $this->Form->input(
+								'transport',
+								[
+									'label' => 'Transportation',
+								]
+							);
+							?>
+
+						</div>
+						<div class="col-md-6">
+							<?php echo $this->Form->input(
+								'accommodation',
+								[
+									'label' => 'Accommodation',
+								]
+							);
+							?>
+
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<?php echo $this->Form->input(
+								'meal',
+								[
+									'label' => 'Meals & Dining',
+								]
+							);
+							?>
+
+						</div>
+						<div class="col-md-6">
+							<?php echo $this->Form->input(
+								'business',
+								[
+									'label' => 'Business Expenses',
+								]
+							);
+							?>
+
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+						<?php echo $this->Form->input(
+								'miscellaneous',
+								[
+									'label' => 'Miscellaneous',
+								]
+							);
+							?>
+
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<?php echo $this->Form->input('status'); ?>
+						</div>
+						<div class="col-md-6">
+							<?php echo $this->Form->input('reimbursable'); ?>
+						</div>
+					</div>
+
 
 
 
