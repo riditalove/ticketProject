@@ -96,7 +96,7 @@
 									<div class="modal-body">
 										<p>Please upload a clear scanned copy of your passport. Make sure:</p>
 										<ul>
-											<li>The file is in PDF format.</li>
+											<li>The file is in PDF,png,jpeg,jpg format.</li>
 											<li>The file size does not exceed 2MB.</li>
 											<li>All details are clearly visible.</li>
 											<li>Enter the first 2 pages of your Passport.</li>
@@ -144,7 +144,7 @@
 											<li>Driving License</li>
 										</ul>
 										<ul>
-											<li>The file should be in pdf format</li>
+											<li>The file should be in pdf,png,jpg,jpeg format</li>
 											<li>It should not exceed 2MB</li>
 										</ul>
 									</div>
@@ -191,7 +191,7 @@
 									<ul>
 										<li>Ensure both the front and back sides are included.</li>
 										<li>The image should be clear and readable.</li>
-										<li>Accepted formats: PDF.</li>
+										<li>Accepted formats: PDF,png,jpg,jpeg</li>
 									</ul>
 								</div>
 								<div class="modal-footer">

@@ -174,7 +174,8 @@
 											<?php echo h($traveller['Traveller']['designation']); ?>&nbsp;
 										</td>
 										<td><?php echo h($traveller['Traveller']['date_of_birth']); ?>&nbsp;</td>
-										<td><?php echo h($nationality[$traveller['Traveller']['nationality']]); ?>&nbsp;</td>
+										<td><?php echo h($nationality[$traveller['Traveller']['nationality']]); ?>&nbsp;
+										</td>
 										<td><?php echo h($traveller['Traveller']['passport_no']); ?>&nbsp;</td>
 										<td><?php echo h($traveller['Traveller']['passport_expiry']); ?>&nbsp;</td>
 										<td><?php echo h($traveller['Traveller']['status']); ?>&nbsp;</td>
@@ -183,77 +184,198 @@
 										<td>
 											<?php
 											$pdfFile = 'img/passport-traveller/' . $traveller['Traveller']['id'] . '.pdf';
+											$pngFile = 'img/passport-traveller/' . $traveller['Traveller']['id'] . '.png';
+											$jpgFile = 'img/passport-traveller/' . $traveller['Traveller']['id'] . '.jpg';
+											$jpegFile = 'img/passport-traveller/' . $traveller['Traveller']['id'] . '.jpeg';
 											?>
 
 											<?php if (file_exists(WWW_ROOT . $pdfFile)): ?>
 												<!-- View PDF Icon -->
-												<a href="<?php echo $this->Html->url('/' . $pdfFile); ?>" target="_blank"
-													>
+												<a href="<?php echo $this->Html->url('/' . $pdfFile); ?>" target="_blank">
 													<i class="fas fa-eye"></i> <!-- Eye icon for View -->
 												</a>
 
 												<!-- Download PDF Icon -->
-												<a href="<?php echo $this->Html->url('/' . $pdfFile); ?>" download
-													>
+												<a href="<?php echo $this->Html->url('/' . $pdfFile); ?>" download>
 													<i class="fas fa-download"></i> <!-- Download icon -->
 												</a>
-											<?php else: ?>
+											<?php endif; ?>
+
+											<?php if (file_exists(WWW_ROOT . $pngFile)): ?>
+												<!-- View PNG -->
+												<a href="<?php echo $this->Html->url('/' . $pngFile); ?>" target="_blank">
+													<i class="fas fa-eye"></i> <!-- Eye icon for View -->
+												</a>
+
+												<!-- Download PNG -->
+												<a href="<?php echo $this->Html->url('/' . $pngFile); ?>" download>
+													<i class="fas fa-download"></i> <!-- Download icon -->
+												</a>
+											<?php endif; ?>
+
+											<?php if (file_exists(WWW_ROOT . $jpgFile)): ?>
+												<!-- View JPG -->
+												<a href="<?php echo $this->Html->url('/' . $jpgFile); ?>" target="_blank">
+													<i class="fas fa-eye"></i> <!-- Eye icon for View -->
+												</a>
+
+												<!-- Download JPG -->
+												<a href="<?php echo $this->Html->url('/' . $jpgFile); ?>" download>
+													<i class="fas fa-download"></i> <!-- Download icon -->
+												</a>
+											<?php endif; ?>
+
+											<?php if (file_exists(WWW_ROOT . $jpegFile)): ?>
+												<!-- View JPEG -->
+												<a href="<?php echo $this->Html->url('/' . $jpegFile); ?>" target="_blank">
+													<i class="fas fa-eye"></i> <!-- Eye icon for View -->
+												</a>
+
+												<!-- Download JPEG -->
+												<a href="<?php echo $this->Html->url('/' . $jpegFile); ?>" download>
+													<i class="fas fa-download"></i> <!-- Download icon -->
+												</a>
+											<?php endif; ?>
+
+											<?php if (!file_exists(WWW_ROOT . $pdfFile) && !file_exists(WWW_ROOT . $pngFile) && !file_exists(WWW_ROOT . $jpgFile) && !file_exists(WWW_ROOT . $jpegFile)): ?>
 												<span class="text-muted">No file uploaded</span>
 											<?php endif; ?>
+
 										</td>
 
 										<td>
+
 											<?php
 											$pdfFile = 'img/identification-traveller/' . $traveller['Traveller']['id'] . '.pdf';
+											$pngFile = 'img/identification-traveller/' . $traveller['Traveller']['id'] . '.png';
+											$jpgFile = 'img/identification-traveller/' . $traveller['Traveller']['id'] . '.jpg';
+											$jpegFile = 'img/identification-travellerr/' . $traveller['Traveller']['id'] . '.jpeg';
 											?>
 
 											<?php if (file_exists(WWW_ROOT . $pdfFile)): ?>
 												<!-- View PDF Icon -->
-												<a href="<?php echo $this->Html->url('/' . $pdfFile); ?>" target="_blank"
-													>
+												<a href="<?php echo $this->Html->url('/' . $pdfFile); ?>" target="_blank">
 													<i class="fas fa-eye"></i> <!-- Eye icon for View -->
 												</a>
 
 												<!-- Download PDF Icon -->
-												<a href="<?php echo $this->Html->url('/' . $pdfFile); ?>" download
-													>
+												<a href="<?php echo $this->Html->url('/' . $pdfFile); ?>" download>
 													<i class="fas fa-download"></i> <!-- Download icon -->
 												</a>
-											<?php else: ?>
+											<?php endif; ?>
+
+											<?php if (file_exists(WWW_ROOT . $pngFile)): ?>
+												<!-- View PNG -->
+												<a href="<?php echo $this->Html->url('/' . $pngFile); ?>" target="_blank">
+													<i class="fas fa-eye"></i> <!-- Eye icon for View -->
+												</a>
+
+												<!-- Download PNG -->
+												<a href="<?php echo $this->Html->url('/' . $pngFile); ?>" download>
+													<i class="fas fa-download"></i> <!-- Download icon -->
+												</a>
+											<?php endif; ?>
+
+											<?php if (file_exists(WWW_ROOT . $jpgFile)): ?>
+												<!-- View JPG -->
+												<a href="<?php echo $this->Html->url('/' . $jpgFile); ?>" target="_blank">
+													<i class="fas fa-eye"></i> <!-- Eye icon for View -->
+												</a>
+
+												<!-- Download JPG -->
+												<a href="<?php echo $this->Html->url('/' . $jpgFile); ?>" download>
+													<i class="fas fa-download"></i> <!-- Download icon -->
+												</a>
+											<?php endif; ?>
+
+											<?php if (file_exists(WWW_ROOT . $jpegFile)): ?>
+												<!-- View JPEG -->
+												<a href="<?php echo $this->Html->url('/' . $jpegFile); ?>" target="_blank">
+													<i class="fas fa-eye"></i> <!-- Eye icon for View -->
+												</a>
+
+												<!-- Download JPEG -->
+												<a href="<?php echo $this->Html->url('/' . $jpegFile); ?>" download>
+													<i class="fas fa-download"></i> <!-- Download icon -->
+												</a>
+											<?php endif; ?>
+
+											<?php if (!file_exists(WWW_ROOT . $pdfFile) && !file_exists(WWW_ROOT . $pngFile) && !file_exists(WWW_ROOT . $jpgFile) && !file_exists(WWW_ROOT . $jpegFile)): ?>
 												<span class="text-muted">No file uploaded</span>
 											<?php endif; ?>
+
 										</td>
 
 										<td>
 											<?php
 											$pdfFile = 'img/employment-traveller/' . $traveller['Traveller']['id'] . '.pdf';
+											$pngFile = 'img/employment-traveller/' . $traveller['Traveller']['id'] . '.png';
+											$jpgFile = 'img/employment-traveller/' . $traveller['Traveller']['id'] . '.jpg';
+											$jpegFile = 'img/employment-traveller/' . $traveller['Traveller']['id'] . '.jpeg';
 											?>
 
 											<?php if (file_exists(WWW_ROOT . $pdfFile)): ?>
 												<!-- View PDF Icon -->
-												<a href="<?php echo $this->Html->url('/' . $pdfFile); ?>" target="_blank"
-													>
+												<a href="<?php echo $this->Html->url('/' . $pdfFile); ?>" target="_blank">
 													<i class="fas fa-eye"></i> <!-- Eye icon for View -->
 												</a>
 
 												<!-- Download PDF Icon -->
-												<a href="<?php echo $this->Html->url('/' . $pdfFile); ?>" download
-													">
+												<a href="<?php echo $this->Html->url('/' . $pdfFile); ?>" download>
 													<i class="fas fa-download"></i> <!-- Download icon -->
 												</a>
-											<?php else: ?>
+											<?php endif; ?>
+
+											<?php if (file_exists(WWW_ROOT . $pngFile)): ?>
+												<!-- View PNG -->
+												<a href="<?php echo $this->Html->url('/' . $pngFile); ?>" target="_blank">
+													<i class="fas fa-eye"></i> <!-- Eye icon for View -->
+												</a>
+
+												<!-- Download PNG -->
+												<a href="<?php echo $this->Html->url('/' . $pngFile); ?>" download>
+													<i class="fas fa-download"></i> <!-- Download icon -->
+												</a>
+											<?php endif; ?>
+
+											<?php if (file_exists(WWW_ROOT . $jpgFile)): ?>
+												<!-- View JPG -->
+												<a href="<?php echo $this->Html->url('/' . $jpgFile); ?>" target="_blank">
+													<i class="fas fa-eye"></i> <!-- Eye icon for View -->
+												</a>
+
+												<!-- Download JPG -->
+												<a href="<?php echo $this->Html->url('/' . $jpgFile); ?>" download>
+													<i class="fas fa-download"></i> <!-- Download icon -->
+												</a>
+											<?php endif; ?>
+
+											<?php if (file_exists(WWW_ROOT . $jpegFile)): ?>
+												<!-- View JPEG -->
+												<a href="<?php echo $this->Html->url('/' . $jpegFile); ?>" target="_blank">
+													<i class="fas fa-eye"></i> <!-- Eye icon for View -->
+												</a>
+
+												<!-- Download JPEG -->
+												<a href="<?php echo $this->Html->url('/' . $jpegFile); ?>" download>
+													<i class="fas fa-download"></i> <!-- Download icon -->
+												</a>
+											<?php endif; ?>
+
+											<?php if (!file_exists(WWW_ROOT . $pdfFile) && !file_exists(WWW_ROOT . $pngFile) && !file_exists(WWW_ROOT . $jpgFile) && !file_exists(WWW_ROOT . $jpegFile)): ?>
 												<span class="text-muted">No file uploaded</span>
 											<?php endif; ?>
+
 										</td>
 
-										
+
 										<td class="actions">
 											<?php echo $this->Html->link(__('<i class="fa fa-eye" data-bs-toggle="tooltip" title="View"></i>'), array('action' => 'view', $traveller['Traveller']['id']), array('escape' => false)); ?>
 											<?php echo $this->Html->link(__('<i class="fa fa-pencil-alt text-success" data-bs-toggle="tooltip" title="Edit"></i>'), array('action' => 'edit', $traveller['Traveller']['id']), array('escape' => false)); ?>
 											<?php echo $this->Form->postLink(__('<i class="fa fa-trash text-danger" data-bs-toggle="tooltip" title="Delete"></i>'), array('action' => 'delete', $traveller['Traveller']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $traveller['Traveller']['id']), 'escape' => false)); ?>
 
 									</tr>
-									
+
 								<?php endforeach; ?>
 							</tbody>
 

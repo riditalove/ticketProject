@@ -30,10 +30,10 @@ class Traveller extends AppModel
 			),
 		),
 
-		'pfile' => array(
-			'rule' => array('extension', array('pdf')),
-			'message' => 'Only PDF files are allowed'
-		),
+		// 'pfile' => array(
+		// 	'rule' => array('extension', array('pdf','png','jpg','jpeg','docx')),
+		// 	'message' => 'Only PDF files and Images are allowed'
+		// ),
 		'designation_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
